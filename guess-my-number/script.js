@@ -1,17 +1,12 @@
 'use strict';
 
-// document.querySelector('.message').textContent = 'CORRECT NUMBER';
-// document.querySelector('.number').textContent = 13;
-// document.querySelector('.score').textContent = 10;
-
-// document.querySelector('.guess').value = 23;
-// console.log(document.querySelector('.guess').value);
-
 const checkNumberBtn = document.querySelector('.check');
 const messageOutput = document.querySelector('.message');
-
+const scoreEl = document.querySelector('.score');
+let score = 20;
+scoreEl.textContent = score;
 const randomNumberGenerator = function () {
-  const randomNum = Math.floor(Math.random() * 100) + 1;
+  const randomNum = Math.floor(Math.random() * 20) + 1;
   console.log(randomNum);
   return randomNum;
 };
@@ -22,7 +17,10 @@ const enteredNumber = function () {
   if (!guessInput) {
     messageOutput.textContent = 'Enter a number';
   }
-
+  if (randomResult !== guessInput) {
+    score--;
+    scoreEl.textContent = score;
+  }
   if (randomResult < guessInput) {
     messageOutput.textContent = 'Go Lower';
   } else if (randomResult > guessInput) {
