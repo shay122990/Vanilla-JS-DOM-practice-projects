@@ -25,13 +25,16 @@ let resetBtn = document.createElement('button');
 resetBtn.textContent = 'Reset game';
 resetBtn.classList.add('btn', 'reset');
 
+const displayMessage = function (message) {
+  messageOutput.textContent = message;
+};
 const enteredNumber = function () {
   const guessInput = Number(document.querySelector('.guess').value);
 
   if (!guessInput) {
-    messageOutput.textContent = 'Enter a number';
+    displayMessage('Enter a number');
   } else if (guessInput === randomResult) {
-    messageOutput.textContent = 'You Got It';
+    displayMessage('You Got It');
     correctNumber.textContent = randomResult;
     body.style.backgroundColor = '#60b347';
     checkNumberBtn.disabled = true;
@@ -45,13 +48,13 @@ const enteredNumber = function () {
     scoreEl.textContent = score;
 
     if (guessInput > randomResult) {
-      messageOutput.textContent = 'Too High';
+      displayMessage('Too High');
     } else {
-      messageOutput.textContent = 'Too Low';
+      displayMessage('Too Low');
     }
 
     if (score <= 0) {
-      messageOutput.textContent = 'Game Over!';
+      displayMessage('Game Over!');
       checkNumberBtn.disabled = true;
       rightSection.appendChild(resetBtn);
     }
@@ -64,7 +67,7 @@ const playAgain = function () {
   correctNumber.textContent = '?';
   document.querySelector('.guess').value = '';
   scoreEl.textContent = score;
-  messageOutput.textContent = 'Start guessing...';
+  displayMessage('Start guessing...');
   body.style.backgroundColor = '#222';
   checkNumberBtn.disabled = false;
 };
