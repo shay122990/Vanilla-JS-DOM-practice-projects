@@ -5,19 +5,27 @@ const resetBtn = document.getElementById('reset');
 
 let count = 0;
 
+const updateCounter = function () {
+  counter.textContent = count;
+
+  if (count > 0) {
+    counter.style.color = 'green';
+  } else if (count < 0) {
+    counter.style.color = 'red';
+  } else {
+    counter.style.color = 'black';
+  }
+};
 increaseBtn.addEventListener('click', function () {
   count++;
-  counter.textContent = count;
-  counter.style.color = 'green';
+  updateCounter();
 });
 
 decreaseBtn.addEventListener('click', function () {
   count--;
-  counter.textContent = count;
-  counter.style.color = 'red';
+  updateCounter();
 });
 resetBtn.addEventListener('click', function () {
   count = 0;
-  counter.textContent = count;
-  counter.style.color = 'black';
+  updateCounter();
 });
