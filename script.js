@@ -17,6 +17,10 @@ const projects = [
     // img: 'pig-game.jpg',
     link: './color-flipper/index.html',
   },
+  {
+    title: 'Counter App',
+    link: './counter-app/index.html',
+  },
   // will add more projects here
 ];
 
