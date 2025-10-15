@@ -21,6 +21,10 @@ const projects = [
     title: 'Counter App',
     link: './counter-app/index.html',
   },
+  {
+    title: 'Password Toggle',
+    link: './password-toggle/index.html',
+  },
   // will add more projects here
 ];
 
