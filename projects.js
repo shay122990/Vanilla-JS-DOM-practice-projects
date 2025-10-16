@@ -23,5 +23,9 @@ export const projects = [
     title: 'Password Toggle',
     link: './password-toggle/index.html',
   },
+  {
+    title: 'Random Quote',
+    link: './random-quote/index.html',
+  },
   // will add more projects here
 ];
