@@ -27,5 +27,9 @@ export const projects = [
     title: 'Random Quote',
     link: './random-quote/index.html',
   },
+  {
+    title: 'Dark Mode Toggle',
+    link: './dark-mode/index.html',
+  },
   // will add more projects here
 ];
