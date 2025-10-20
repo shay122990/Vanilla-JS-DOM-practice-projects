@@ -31,5 +31,9 @@ export const projects = [
     title: 'Dark Mode Toggle',
     link: './dark-mode/index.html',
   },
+  {
+    title: 'Image Carousel',
+    link: './image-carousel/index.html',
+  },
   // will add more projects here
 ];
