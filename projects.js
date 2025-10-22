@@ -35,5 +35,9 @@ export const projects = [
     title: 'Image Carousel',
     link: './image-carousel/index.html',
   },
+  {
+    title: 'Countdown Input',
+    link: './countdown-input/index.html',
+  },
   // will add more projects here
 ];
