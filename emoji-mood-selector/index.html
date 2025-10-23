@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM Quest 06 — Emoji Mood Selector</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>How are you feeling today?</h1>
+
+      <ul
+        id="emojiList"
+        class="emoji-list"
+        role="listbox"
+        aria-label="Select your mood"
+      >
+        <li class="emoji" data-mood="sad" tabindex="0">😞</li>
+        <li class="emoji" data-mood="neutral" tabindex="0">😐</li>
+        <li class="emoji" data-mood="happy" tabindex="0">🙂</li>
+        <li class="emoji" data-mood="joyful" tabindex="0">😄</li>
+        <li class="emoji" data-mood="excited" tabindex="0">🤩</li>
+      </ul>
+
+      <p id="output" class="output">Select a mood above!</p>
+
+      <button id="resetBtn" type="button">Reset</button>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

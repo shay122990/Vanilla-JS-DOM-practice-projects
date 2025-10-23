@@ -39,5 +39,9 @@ export const projects = [
     title: 'Countdown Input',
     link: './countdown-input/index.html',
   },
+  {
+    title: 'Emoji Mood Selector',
+    link: './emoji-mood-selector/index.html',
+  },
   // will add more projects here
 ];

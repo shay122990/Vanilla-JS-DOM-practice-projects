@@ -1,0 +1,71 @@
+:root {
+  --bg: #0f1220;
+  --card: #151a2c;
+  --border: #252a41;
+  --text: #e7e8ee;
+  --muted: #9aa0b4;
+  --accent: #6c5ce7;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(1200px 800px at 20% 0%, #1a1f37, #0b0e19 60%);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+h1 {
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+.emoji-list {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+  margin: 1rem 0;
+}
+.emoji {
+  font-size: 2.5rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 0.3rem;
+  transition: transform 0.2s ease, border 0.2s ease;
+}
+.emoji:hover {
+  transform: scale(1.2);
+}
+.emoji.active {
+  border-color: var(--accent);
+  background-color: yellow;
+}
+.output {
+  margin-top: 1rem;
+  color: var(--muted);
+}
+button {
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #1d2236;
+  color: var(--text);
+  cursor: pointer;
+}
+button:hover {
+  background: #2a2f45;
+}
