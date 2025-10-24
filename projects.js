@@ -43,5 +43,9 @@ export const projects = [
     title: 'Emoji Mood Selector',
     link: './emoji-mood-selector/index.html',
   },
+  {
+    title: 'Tip Calculator',
+    link: './tip-calculator/index.html',
+  },
   // will add more projects here
 ];
