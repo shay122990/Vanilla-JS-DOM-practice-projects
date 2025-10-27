@@ -1,0 +1,108 @@
+:root {
+  --bg: #0f1220;
+  --panel: #151a2c;
+  --border: #252a41;
+  --text: #e7e8ee;
+  --muted: #9aa0b4;
+  --accent: #6c5ce7;
+  --danger: #ff5c5c;
+  --ok: #55efc4;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: radial-gradient(1200px 800px at 20% 0%, #1a1f37, #0b0e19 60%);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  padding: 5vh 1rem;
+}
+.wrap {
+  width: min(720px, 98vw);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  padding: 1.25rem 1rem;
+}
+h1 {
+  margin: 0.25rem 0 1rem;
+  font-size: 1.4rem;
+}
+.label {
+  display: block;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+.textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 120px;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  background: #101426;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.meta {
+  margin-top: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.counts {
+  color: var(--muted);
+}
+.counts.danger {
+  color: var(--danger);
+}
+.sep {
+  opacity: 0.4;
+  margin: 0 0.3rem;
+}
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+button {
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #1d2236;
+  color: var(--text);
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+button#postBtn:not(:disabled) {
+  border-color: #3b2f6d;
+  background: #2a2254;
+}
+.progress {
+  margin-top: 0.6rem;
+  width: 100%;
+  height: 10px;
+  background: #0e1224;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress__fill {
+  height: 100%;
+  width: calc(var(--pct, 0) * 1%);
+  background: linear-gradient(90deg, var(--accent), var(--ok));
+  transition: width 0.12s linear;
+}
+.hint {
+  color: var(--muted);
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}

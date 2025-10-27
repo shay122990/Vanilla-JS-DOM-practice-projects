@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Live Character Counter</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="app" class="wrap" data-max="140">
+      <h1>Compose</h1>
+
+      <label for="message" class="label">Your message</label>
+      <textarea
+        id="message"
+        class="textarea"
+        rows="5"
+        placeholder="What's happening?"
+      ></textarea>
+
+      <div class="meta">
+        <div class="counts">
+          <span id="used">0</span> / <span id="max">140</span>
+          <span class="sep">·</span>
+          Remaining: <strong id="remaining">140</strong>
+        </div>
+        <div class="buttons">
+          <button id="clearBtn" type="button">Clear</button>
+          <button id="postBtn" type="button" disabled>Post</button>
+        </div>
+      </div>
+
+      <div class="progress" aria-hidden="true">
+        <div id="progressFill" class="progress__fill" style="--pct: 0"></div>
+      </div>
+
+      <p id="hint" class="hint">
+        Max 140 characters. Counter turns red when you go over.
+      </p>
+      <div class="post">
+        <span>Your Post :</span>
+        <p id="post-text" class="post-text"></p>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

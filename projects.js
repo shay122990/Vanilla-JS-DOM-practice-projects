@@ -47,5 +47,9 @@ export const projects = [
     title: 'Tip Calculator',
     link: './tip-calculator/index.html',
   },
+  {
+    title: 'Live Character Counter',
+    link: './live-character-counter/index.html',
+  },
   // will add more projects here
 ];
