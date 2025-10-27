@@ -8,9 +8,33 @@ const progressFill = document.getElementById('progressFill');
 const postBtn = document.getElementById('postBtn');
 const clearBtn = document.getElementById('clearBtn');
 const postText = document.getElementById('post-text');
+const postsList = document.getElementById('postsList');
 
 const MAX = 140;
+let posts = [];
 
+function renderPosts() {
+  postsList.innerHTML = '';
+  for (let i = 0; i < posts.length; i++) {
+    const li = document.createElement('li');
+    li.textContent = posts[i];
+    postsList.appendChild(li);
+  }
+}
+
+/// Immediately Invoked Function Expression (IIFE)
+(function init() {
+  const rawData = localStorage.getItem('posts');
+  if (rawData) {
+    try {
+      const parsed = JSON.parse(rawData);
+      if (Array.isArray(parsed)) posts = parsed;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  renderPosts();
+})();
 textInput.addEventListener('input', function () {
   let usedCount = textInput.value.length;
   let remaining = MAX - usedCount;
@@ -37,8 +61,12 @@ textInput.addEventListener('input', function () {
 
 postBtn.addEventListener('click', function () {
   if (postBtn.disabled) return;
-  console.log('saved');
-  postText.textContent = textInput.value;
+
+  const text = textInput.value.trim();
+  if (text.length === 0) return;
+  posts.push(text);
+  localStorage.setItem('posts', JSON.stringify(posts));
+  renderPosts();
   postBtn.disabled = true;
 });
 
@@ -46,7 +74,7 @@ clearBtn.addEventListener('click', function () {
   textInput.value = '';
   used.textContent = 0;
   remainingChars.textContent = MAX;
-  progressFill.style = '--pct: 0';
+  progressFill.style.setProperty('--pct', 0);
   remainingChars.style.color = 'var(--text)';
   used.style.color = 'var(--text)';
   postBtn.disabled = true;
