@@ -1,0 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: white;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.box {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.red {
+  background: red;
+}
+.green {
+  background: green;
+}
+.blue {
+  background: blue;
+}
+.yellow {
+  background: gold;
+}
+.purple {
+  background: purple;
+}
+
+#resetBtn {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background: #444;
+  color: white;
+  border-radius: 6px;
+}
+
+#colorName {
+  margin-top: 15px;
+  font-size: 18px;
+}

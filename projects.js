@@ -51,5 +51,9 @@ export const projects = [
     title: 'Live Character Counter',
     link: './live-character-counter/index.html',
   },
+  {
+    title: 'Colorful Boxes',
+    link: './colorful-boxes/index.html',
+  },
   // will add more projects here
 ];
