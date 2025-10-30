@@ -55,5 +55,6 @@ export const projects = [
     title: 'Colorful Boxes',
     link: './colorful-boxes/index.html',
   },
+  { title: 'Restaurant Rush', link: './restaurant-rush/index.html' },
   // will add more projects here
 ];
