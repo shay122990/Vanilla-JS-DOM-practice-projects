@@ -4,6 +4,9 @@ const combinedMenuEl = document.getElementById('combinedMenu');
 const ingredients = document.querySelectorAll('.ing');
 const pastaOut = document.getElementById('pastaOut');
 const cookBtn = document.getElementById('cookPasta');
+const guestName = document.getElementById('guestName');
+const spellBtn = document.getElementById('spellBtn');
+const spelledName = document.getElementById('spelled');
 
 const restaurant = {
   name: 'Classico Italiano',
@@ -39,16 +42,23 @@ const cookPasta = function (e) {
 
   pastaOut.textContent = restaurant.orderPasta(...inputOrders);
 };
-cookBtn.addEventListener('click', cookPasta);
 
-// next
-// click spell →
-//   read value →
-//   trim →
-//   if empty: show error →
-//   clear #spelled children →
-//   [...string] to array of characters →
-//   for each char:
-//     create chip element
-//     set textContent
-//     append to spelled container
+const spellGuestName = function () {
+  const guestValue = guestName.value.trim();
+  if (!guestValue) {
+    alert('Please input your name!');
+    return;
+  }
+  spelledName.innerHTML = '';
+  const chars = [...guestValue];
+  for (let i = 0; i < chars.length; i++) {
+    const chip = document.createElement('span');
+    chip.textContent = chars[i];
+    chip.classList.add('chip');
+    spelledName.appendChild(chip);
+  }
+};
+
+spellBtn.addEventListener('click', spellGuestName);
+
+cookBtn.addEventListener('click', cookPasta);
