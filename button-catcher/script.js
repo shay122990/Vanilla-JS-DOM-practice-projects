@@ -7,7 +7,7 @@ const resetBtn = document.getElementById('reset-btn');
 
 let score = 0;
 let moveInterval = null;
-let timeLeft = 30;
+let timeLeft = 20;
 let timerId = null;
 
 function clearTimers() {
@@ -59,7 +59,7 @@ function startGame() {
   resetBtn.hidden = true;
 
   startMoving(1500);
-  startGameTimer(30);
+  startGameTimer(20);
 }
 
 function endGame() {
