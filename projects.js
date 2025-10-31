@@ -56,5 +56,6 @@ export const projects = [
     link: './colorful-boxes/index.html',
   },
   { title: 'Restaurant Rush', link: './restaurant-rush/index.html' },
+  { title: 'Button Catcher', link: './button-catcher/index.html' },
   // will add more projects here
 ];
