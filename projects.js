@@ -57,5 +57,6 @@ export const projects = [
   },
   { title: 'Restaurant Rush', link: './restaurant-rush/index.html' },
   { title: 'Button Catcher', link: './button-catcher/index.html' },
+  { title: 'Reaction Time Tester', link: './reaction-time-tester/index.html' },
   // will add more projects here
 ];
