@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clock + Stopwatch</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="card" id="clock-card" aria-labelledby="clock-title">
+        <h1 id="clock-title">Digital Clock</h1>
+
+        <div class="clock">
+          <div id="time">00:00:00</div>
+          <div class="subline">
+            <span id="ampm">AM</span>
+            <span id="date">Mon, Jan 01, 1970</span>
+          </div>
+        </div>
+        <div class="row">
+          <label class="switch">
+            <input type="checkbox" id="toggle-24h" />
+            <span>24-hour</span>
+          </label>
+
+          <!-- You can populate more TZ options via JS if desired -->
+          <!-- <label>
+            <span class="sr-only">Timezone</span>
+            <select id="tz-select">
+              <option value="local" selected>Local</option>
+            </select>
+          </label> -->
+        </div>
+      </section>
+
+      <!-- STOPWATCH -->
+      <section class="card" id="sw-card" aria-labelledby="sw-title">
+        <h2 id="sw-title">Stopwatch</h2>
+
+        <div class="stopwatch">
+          <div id="sw-display">00:00.000</div>
+        </div>
+
+        <div class="controls">
+          <button id="sw-start">Start</button>
+          <button id="sw-stop" disabled>Stop</button>
+          <button id="sw-reset" disabled>Reset</button>
+          <button id="sw-lap" disabled>Lap</button>
+        </div>
+
+        <ul id="sw-laps" class="laps" aria-live="polite" aria-label="Lap times">
+          <!-- <li><span class="lap-index">#1</span><span class="lap-time">00:12.345</span></li> -->
+        </ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
