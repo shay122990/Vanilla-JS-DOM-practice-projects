@@ -9,6 +9,8 @@ const stopButton = document.getElementById('sw-stop');
 const resetButton = document.getElementById('sw-reset');
 const lapButton = document.getElementById('sw-lap');
 const lapsList = document.getElementById('sw-laps');
+const toggle24h = document.getElementById('toggle-24h');
+const tzSelect = document.getElementById('tz-select');
 
 let isRunning = false;
 let startTimestamp = 0;
@@ -16,6 +18,8 @@ let totalElapsedMs = 0;
 let animationFrameId = null;
 let lapTimes = [];
 let previousLapElapsedMs = 0;
+let use24hFormat = false;
+let selectedTimezone = 'local';
 
 const pad = (n) => String(n).padStart(2, '0');
 const pad3 = (n) => String(n).padStart(3, '0');
@@ -23,14 +27,27 @@ const pad3 = (n) => String(n).padStart(3, '0');
 // ---- clock ----
 function updateClock() {
   const now = new Date();
-  let hours = now.getHours();
-  const minutes = pad(now.getMinutes());
-  const seconds = pad(now.getSeconds());
+
+  let dateToDisplay = now;
+  if (selectedTimezone !== 'local') {
+    // convert to selected timezone using Intl
+    dateToDisplay = new Date(
+      now.toLocaleString('en-US', { timeZone: selectedTimezone })
+    );
+  }
+
+  let hours = dateToDisplay.getHours();
+  const minutes = pad(dateToDisplay.getMinutes());
+  const seconds = pad(dateToDisplay.getSeconds());
   const ampm = hours >= 12 ? 'PM' : 'AM';
-  hours = hours % 12 || 12;
-  timeEl.textContent = `${pad(hours)}:${minutes}:${seconds}`;
-  ampmEl.textContent = ampm;
-  dateEl.textContent = now.toLocaleDateString(undefined, {
+
+  if (!use24hFormat) hours = hours % 12 || 12;
+
+  const timeStr = `${pad(hours)}:${minutes}:${seconds}`;
+  timeEl.textContent = timeStr;
+  ampmEl.textContent = use24hFormat ? '' : ampm;
+
+  dateEl.textContent = dateToDisplay.toLocaleDateString(undefined, {
     weekday: 'short',
     month: 'short',
     day: '2-digit',
@@ -118,6 +135,15 @@ startButton.addEventListener('click', startStopwatch);
 stopButton.addEventListener('click', stopStopwatch);
 resetButton.addEventListener('click', resetStopwatch);
 lapButton.addEventListener('click', recordLap);
+toggle24h.addEventListener('change', (e) => {
+  use24hFormat = e.target.checked;
+  updateClock();
+});
+
+tzSelect.addEventListener('change', (e) => {
+  selectedTimezone = e.target.value;
+  updateClock();
+});
 
 updateClock();
 setInterval(updateClock, 1000);
