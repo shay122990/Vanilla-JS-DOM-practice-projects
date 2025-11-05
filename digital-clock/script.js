@@ -24,6 +24,24 @@ let selectedTimezone = 'local';
 const pad = (n) => String(n).padStart(2, '0');
 const pad3 = (n) => String(n).padStart(3, '0');
 
+const timezones = [
+  'local',
+  'UTC',
+  'Europe/London',
+  'Europe/Paris',
+  'Asia/Dubai',
+  'Asia/Bishkek',
+  'America/New_York',
+  'Asia/Tokyo',
+];
+
+tzSelect.innerHTML = timezones
+  .map(
+    (tz) =>
+      `<option value="${tz}" ${tz === 'local' ? 'selected' : ''}>${tz}</option>`
+  )
+  .join('');
+
 // ---- clock ----
 function updateClock() {
   const now = new Date();
