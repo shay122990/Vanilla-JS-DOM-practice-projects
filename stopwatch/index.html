@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="card" aria-labelledby="title">
+        <h1 id="title">Stopwatch</h1>
+
+        <div class="display" id="sw-display" aria-live="polite">00:00.000</div>
+
+        <div class="controls">
+          <button id="start-btn">Start</button>
+          <button id="stop-btn" disabled>Stop</button>
+          <button id="reset-btn" disabled>Reset</button>
+          <button id="lap-btn" disabled>Lap</button>
+        </div>
+
+        <ul
+          id="laps-list"
+          class="laps"
+          aria-live="polite"
+          aria-label="Lap times"
+        ></ul>
+      </section>
+    </main>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

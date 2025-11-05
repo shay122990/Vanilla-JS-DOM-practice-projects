@@ -59,5 +59,6 @@ export const projects = [
   { title: 'Button Catcher', link: './button-catcher/index.html' },
   { title: 'Reaction Time Tester', link: './reaction-time-tester/index.html' },
   { title: 'Digital Clock ', link: './digital-clock/index.html' },
+  { title: 'Stopwatch', link: './stopwatch/index.html' },
   // will add more projects here
 ];
