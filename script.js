@@ -1,6 +1,6 @@
 'use strict';
 
-import { projects } from './projects.js';
+import { projects } from './projects-list.js';
 
 const grid = document.getElementById('projects-grid');
 
