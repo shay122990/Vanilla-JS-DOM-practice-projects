@@ -60,5 +60,6 @@ export const projects = [
   { title: 'Reaction Time Tester', link: './reaction-time-tester/index.html' },
   { title: 'Digital Clock ', link: './digital-clock/index.html' },
   { title: 'Stopwatch', link: './stopwatch/index.html' },
+  { title: 'Search Filter', link: './search-filter/index.html' },
   // will add more projects here
 ];
