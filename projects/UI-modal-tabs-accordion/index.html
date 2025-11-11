@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UI Bundle: Modal • Tabs • Accordion</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <!-- HEADER -->
+      <header class="page-head">
+        <h1>UI Bundle</h1>
+      </header>
+      <!-- Modal-->
+      <section>
+        <button class="btn" data-open-modal="#demo-modal">Open Modal</button>
+
+        <!-- Modal backdrop and dialog -->
+        <div class="modal-backdrop" id="demo-modal" aria-hidden="true">
+          <div
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
+          >
+            <header class="modal-head">
+              <h2 id="modal-title">Example Modal</h2>
+              <button
+                class="icon-btn"
+                data-close-modal
+                aria-label="Close modal"
+              >
+                ✕
+              </button>
+            </header>
+
+            <div class="modal-body">
+              <p>
+                This is a simple modal window. Click outside or press ✕ to close
+                it.
+              </p>
+            </div>
+
+            <footer class="modal-foot">
+              <button class="btn secondary" data-close-modal>Cancel</button>
+              <button class="btn primary" data-confirm-modal>Confirm</button>
+            </footer>
+          </div>
+        </div>
+      </section>
+
+      <!-- TABS -->
+      <section class="card" aria-labelledby="tabs-title">
+        <h2 id="tabs-title">Tabs</h2>
+        <div class="tabs" data-tabs>
+          <div role="tablist" aria-label="Sample tabs" class="tablist">
+            <button
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-1"
+              id="tab-1"
+              tabindex="0"
+              class="tab"
+            >
+              Overview
+            </button>
+            <button
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-2"
+              id="tab-2"
+              tabindex="-1"
+              class="tab"
+            >
+              Details
+            </button>
+            <button
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-3"
+              id="tab-3"
+              tabindex="-1"
+              class="tab"
+            >
+              FAQ
+            </button>
+          </div>
+
+          <div
+            id="panel-1"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tab-1"
+            class="tabpanel"
+          >
+            <p>Overview content…</p>
+          </div>
+          <div
+            id="panel-2"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tab-2"
+            class="tabpanel"
+            hidden
+          >
+            <p>Details content…</p>
+          </div>
+          <div
+            id="panel-3"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tab-3"
+            class="tabpanel"
+            hidden
+          >
+            <p>FAQ content…</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACCORDION -->
+      <section class="card" aria-labelledby="acc-title">
+        <h2 id="acc-title">Accordion</h2>
+        <div class="accordion" data-accordion>
+          <div class="acc-item">
+            <h3>
+              <button
+                class="acc-trigger"
+                aria-expanded="false"
+                aria-controls="acc-panel-1"
+                id="acc-btn-1"
+              >
+                What is this?
+              </button>
+            </h3>
+            <div
+              id="acc-panel-1"
+              class="acc-panel"
+              role="region"
+              aria-labelledby="acc-btn-1"
+              hidden
+            >
+              <p>Accordion answer 1…</p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <h3>
+              <button
+                class="acc-trigger"
+                aria-expanded="false"
+                aria-controls="acc-panel-2"
+                id="acc-btn-2"
+              >
+                How does it work?
+              </button>
+            </h3>
+            <div
+              id="acc-panel-2"
+              class="acc-panel"
+              role="region"
+              aria-labelledby="acc-btn-2"
+              hidden
+            >
+              <p>Accordion answer 2…</p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <h3>
+              <button
+                class="acc-trigger"
+                aria-expanded="false"
+                aria-controls="acc-panel-3"
+                id="acc-btn-3"
+              >
+                Can I customize it?
+              </button>
+            </h3>
+            <div
+              id="acc-panel-3"
+              class="acc-panel"
+              role="region"
+              aria-labelledby="acc-btn-3"
+              hidden
+            >
+              <p>Accordion answer 3…</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- MODAL -->
+    <div class="modal-backdrop" data-modal id="demo-modal" aria-hidden="true">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <header class="modal-head">
+          <h2 id="modal-title">Example Modal</h2>
+          <button class="icon-btn" data-close-modal aria-label="Close modal">
+            ✕
+          </button>
+        </header>
+        <div class="modal-body">
+          <p>Modal content goes here.</p>
+        </div>
+        <footer class="modal-foot">
+          <button class="btn secondary" data-close-modal>Cancel</button>
+          <button class="btn primary">Confirm</button>
+        </footer>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

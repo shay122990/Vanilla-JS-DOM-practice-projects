@@ -68,5 +68,9 @@ export const projects = [
   { title: 'Digital Clock ', link: './projects/digital-clock/index.html' },
   { title: 'Stopwatch', link: './projects/stopwatch/index.html' },
   { title: 'Search Filter', link: './projects/search-filter/index.html' },
+  {
+    title: 'Modal-Tabs-Accordion',
+    link: './projects/UI-modal-tabs-accordion/index.html',
+  },
   // will add more projects here
 ];
