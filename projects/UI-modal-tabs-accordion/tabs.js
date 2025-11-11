@@ -3,16 +3,14 @@
 const tabs = document.querySelectorAll('.tab');
 const panels = document.querySelectorAll('.tabpanel');
 
-function showTab(clickedTab) {
+function showTab(activeTab) {
   panels.forEach((panel) => (panel.hidden = true));
-
   tabs.forEach((tab) => {
     tab.setAttribute('aria-selected', 'false');
   });
+  activeTab.setAttribute('aria-selected', 'true');
 
-  clickedTab.setAttribute('aria-selected', 'true');
-
-  const panelId = clickedTab.getAttribute('aria-controls');
+  const panelId = activeTab.getAttribute('aria-control');
   const panel = document.getElementById(panelId);
   panel.hidden = false;
 }
