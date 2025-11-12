@@ -72,5 +72,9 @@ export const projects = [
     title: 'Modal-Tabs-Accordion',
     link: './projects/UI-modal-tabs-accordion/index.html',
   },
+  {
+    title: 'Disco Lights',
+    link: './projects/disco-lights/index.html',
+  },
   // will add more projects here
 ];
