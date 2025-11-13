@@ -1,8 +1,12 @@
 'use strict';
 
 const startBtn = document.getElementById('start');
-let codes = '0123456789ABCDEF';
+const stopBtn = document.getElementById('stop');
+
+const codes = '0123456789ABCDEF';
 let intervalId = null;
+
+stopBtn.hidden = true;
 
 function generateRandomString(length) {
   let result = '';
@@ -12,12 +16,27 @@ function generateRandomString(length) {
   return '#' + result;
 }
 
-function changeColor() {
-  if (intervalId) return;
+function startParty() {
+  if (intervalId !== null) return;
+
   intervalId = setInterval(() => {
     const randomColor = generateRandomString(6);
     document.body.style.backgroundColor = randomColor;
-  }, 800);
+  }, 500);
+
+  stopBtn.hidden = false;
+  startBtn.disabled = true;
 }
 
-startBtn.addEventListener('click', changeColor);
+function stopParty() {
+  if (intervalId === null) return;
+
+  clearInterval(intervalId);
+  intervalId = null;
+
+  stopBtn.hidden = true;
+  startBtn.disabled = false;
+}
+
+startBtn.addEventListener('click', startParty);
+stopBtn.addEventListener('click', stopParty);
