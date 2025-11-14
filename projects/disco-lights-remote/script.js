@@ -23,22 +23,62 @@ const multiColors = [
   '#1E90FF',
   '#FF4500',
 ];
+const bluesColors = [
+  '#001F3F',
+  '#003566',
+  '#004E89',
+  '#0074D9',
+  '#1E90FF',
+  '#00A8E8',
+  '#00BFFF',
+  '#5BC0EB',
+  '#72EDF2',
+  '#CFFAFE',
+];
+const redsColors = [
+  '#FF0000',
+  '#FF3B30',
+  '#FF4500',
+  '#FF5E57',
+  '#CC0000',
+  '#B30000',
+  '#990000',
+  '#FF1744',
+  '#FF4C4C',
+  '#FFD1D1',
+];
+const neutralColors = [
+  '#FFFFFF',
+  '#F2F2F2',
+  '#E6E6E6',
+  '#CCCCCC',
+  '#B3B3B3',
+  '#999999',
+  '#808080',
+  '#666666',
+  '#4D4D4D',
+  '#333333',
+];
 
 let powerOn = false;
 let currentInterval = null;
 
-const multiColorHandler = function () {
+function changeMode(colorArray) {
   if (!powerOn) return;
-  if (currentInterval !== null) return;
+
+  if (currentInterval !== null) {
+    clearInterval(currentInterval);
+    currentInterval = null;
+  }
 
   let i = 0;
 
   currentInterval = setInterval(() => {
-    document.body.style.backgroundColor = multiColors[i];
+    document.body.style.backgroundColor = colorArray[i];
     i++;
-    if (i >= multiColors.length) i = 0;
+    if (i >= colorArray.length) i = 0;
   }, 500);
-};
+}
 
 powerToggle.addEventListener('click', function () {
   powerOn = !powerOn;
@@ -57,4 +97,7 @@ powerToggle.addEventListener('click', function () {
   }
 });
 
-multiBtn.addEventListener('click', multiColorHandler);
+multiBtn.addEventListener('click', () => changeMode(multiColors));
+bluesBtn.addEventListener('click', () => changeMode(bluesColors));
+redsBtn.addEventListener('click', () => changeMode(redsColors));
+neutralsBtn.addEventListener('click', () => changeMode(neutralColors));
