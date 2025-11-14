@@ -1,42 +1,60 @@
-// 'use strict';
+const powerToggle = document.getElementById('powerToggle');
 
-// const startBtn = document.getElementById('start');
-// const stopBtn = document.getElementById('stop');
+// solid colors buttons
+const multiBtn = document.getElementById('mode-multi');
+const bluesBtn = document.getElementById('mode-blues');
+const redsBtn = document.getElementById('mode-reds');
+const neutralsBtn = document.getElementById('mode-neutrals');
 
-// const codes = '0123456789ABCDEF';
-// let intervalId = null;
+const multiColors = [
+  '#FF0000',
+  '#FF7F00',
+  '#FFFF00',
+  '#00FF00',
+  '#00FFFF',
+  '#0000FF',
+  '#8B00FF',
+  '#FF00FF',
+  '#00FFAA',
+  '#FF1493',
+  '#FFD700',
+  '#7FFF00',
+  '#40E0D0',
+  '#1E90FF',
+  '#FF4500',
+];
 
-// stopBtn.hidden = true;
+let powerOn = false;
+let currentInterval = null;
 
-// function generateRandomString(length) {
-//   let result = '';
-//   for (let i = 0; i < length; i++) {
-//     result += codes.charAt(Math.floor(Math.random() * codes.length));
-//   }
-//   return '#' + result;
-// }
+const multiColorHandler = function () {
+  if (!powerOn) return;
+  if (currentInterval !== null) return;
 
-// function startParty() {
-//   if (intervalId !== null) return;
+  let i = 0;
 
-//   intervalId = setInterval(() => {
-//     const randomColor = generateRandomString(6);
-//     document.body.style.backgroundColor = randomColor;
-//   }, 500);
+  currentInterval = setInterval(() => {
+    document.body.style.backgroundColor = multiColors[i];
+    i++;
+    if (i >= multiColors.length) i = 0;
+  }, 500);
+};
 
-//   stopBtn.hidden = false;
-//   startBtn.disabled = true;
-// }
+powerToggle.addEventListener('click', function () {
+  powerOn = !powerOn;
 
-// function stopParty() {
-//   if (intervalId === null) return;
+  if (!powerOn) {
+    if (currentInterval !== null) {
+      clearInterval(currentInterval);
+      currentInterval = null;
+    }
 
-//   clearInterval(intervalId);
-//   intervalId = null;
+    document.body.style.backgroundColor = '#111';
 
-//   stopBtn.hidden = true;
-//   startBtn.disabled = false;
-// }
+    powerToggle.textContent = 'Power Off';
+  } else {
+    powerToggle.textContent = 'Power On';
+  }
+});
 
-// startBtn.addEventListener('click', startParty);
-// stopBtn.addEventListener('click', stopParty);
+multiBtn.addEventListener('click', multiColorHandler);
