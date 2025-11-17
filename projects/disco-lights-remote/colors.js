@@ -97,3 +97,5 @@ export const neonGradient = [
   '#00dbde',
   '#ff9a9e',
 ];
+
+export const wave = ['#12c2e9', '#c471ed', '#00dbde'];
