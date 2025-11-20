@@ -98,6 +98,7 @@ body {
 
 .remote__btn:hover {
   background: #383838;
+  color: white;
 }
 
 .remote__btn:active {

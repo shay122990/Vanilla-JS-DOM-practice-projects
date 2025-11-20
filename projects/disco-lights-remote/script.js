@@ -31,6 +31,20 @@ const mediumBtn = document.getElementById('speed-medium');
 const fastBtn = document.getElementById('speed-fast');
 const insaneBtn = document.getElementById('speed-insane');
 
+// groups for visual active state
+const modeButtons = [
+  multiBtn,
+  bluesBtn,
+  redsBtn,
+  neutralsBtn,
+  sunsetBtn,
+  oceanBtn,
+  forestBtn,
+  neonBtn,
+];
+
+const speedButtons = [slowBtn, mediumBtn, fastBtn, insaneBtn];
+
 let powerOn = false;
 let currentInterval = null;
 let speed = 1000;
@@ -48,6 +62,16 @@ function resetBodyVisual() {
   document.body.style.transition = 'none';
 }
 
+// clear active visual states
+function clearActiveModes() {
+  modeButtons.forEach((btn) => btn.classList.remove('remote__btn--active'));
+}
+
+function clearActiveSpeeds() {
+  speedButtons.forEach((btn) => btn.classList.remove('remote__btn--active'));
+}
+
+// SOLID COLORS
 function changeSolidMode(colorArray) {
   if (!powerOn) return;
 
@@ -68,7 +92,7 @@ function changeSolidMode(colorArray) {
   }, speed);
 }
 
-// GRADIENT THEMES (smooth fades between colors)
+// GRADIENT
 function changeGradientMode(colorArray) {
   if (!powerOn) return;
 
@@ -89,7 +113,7 @@ function changeGradientMode(colorArray) {
   }, speed);
 }
 
-// restart current mode
+// restart current mode after speed changes
 function restartCurrentMode() {
   if (!powerOn) return;
 
@@ -114,6 +138,8 @@ powerToggle.addEventListener('click', function () {
     currentMode = null;
     currentArray = null;
 
+    clearActiveModes();
+
     powerToggle.textContent = 'Power Off';
   } else {
     powerToggle.textContent = 'Power On';
@@ -121,34 +147,92 @@ powerToggle.addEventListener('click', function () {
 });
 
 // SOLID MODES
-multiBtn.addEventListener('click', () => changeSolidMode(multiColors));
-bluesBtn.addEventListener('click', () => changeSolidMode(bluesColors));
-redsBtn.addEventListener('click', () => changeSolidMode(redsColors));
-neutralsBtn.addEventListener('click', () => changeSolidMode(neutralColors));
+multiBtn.addEventListener('click', () => {
+  if (!powerOn) return;
+  changeSolidMode(multiColors);
+  clearActiveModes();
+  multiBtn.classList.add('remote__btn--active');
+});
+
+bluesBtn.addEventListener('click', () => {
+  if (!powerOn) return;
+  changeSolidMode(bluesColors);
+  clearActiveModes();
+  bluesBtn.classList.add('remote__btn--active');
+});
+
+redsBtn.addEventListener('click', () => {
+  if (!powerOn) return;
+  changeSolidMode(redsColors);
+  clearActiveModes();
+  redsBtn.classList.add('remote__btn--active');
+});
+
+neutralsBtn.addEventListener('click', () => {
+  if (!powerOn) return;
+  changeSolidMode(neutralColors);
+  clearActiveModes();
+  neutralsBtn.classList.add('remote__btn--active');
+});
 
 // GRADIENT MODES
-sunsetBtn.addEventListener('click', () => changeGradientMode(sunsetGradient));
-oceanBtn.addEventListener('click', () => changeGradientMode(oceanGradient));
-forestBtn.addEventListener('click', () => changeGradientMode(forestGradient));
-neonBtn.addEventListener('click', () => changeGradientMode(neonGradient));
+sunsetBtn.addEventListener('click', () => {
+  if (!powerOn) return;
+  changeGradientMode(sunsetGradient);
+  clearActiveModes();
+  sunsetBtn.classList.add('remote__btn--active');
+});
+
+oceanBtn.addEventListener('click', () => {
+  if (!powerOn) return;
+  changeGradientMode(oceanGradient);
+  clearActiveModes();
+  oceanBtn.classList.add('remote__btn--active');
+});
+
+forestBtn.addEventListener('click', () => {
+  if (!powerOn) return;
+  changeGradientMode(forestGradient);
+  clearActiveModes();
+  forestBtn.classList.add('remote__btn--active');
+});
+
+neonBtn.addEventListener('click', () => {
+  if (!powerOn) return;
+  changeGradientMode(neonGradient);
+  clearActiveModes();
+  neonBtn.classList.add('remote__btn--active');
+});
 
 // SPEED BUTTONS
 slowBtn.addEventListener('click', () => {
+  if (!powerOn) return;
   speed = 2000;
+  clearActiveSpeeds();
+  slowBtn.classList.add('remote__btn--active');
   restartCurrentMode();
 });
 
 mediumBtn.addEventListener('click', () => {
+  if (!powerOn) return;
   speed = 1000;
+  clearActiveSpeeds();
+  mediumBtn.classList.add('remote__btn--active');
   restartCurrentMode();
 });
 
 fastBtn.addEventListener('click', () => {
+  if (!powerOn) return;
   speed = 500;
+  clearActiveSpeeds();
+  fastBtn.classList.add('remote__btn--active');
   restartCurrentMode();
 });
 
 insaneBtn.addEventListener('click', () => {
+  if (!powerOn) return;
   speed = 100;
+  clearActiveSpeeds();
+  insaneBtn.classList.add('remote__btn--active');
   restartCurrentMode();
 });
