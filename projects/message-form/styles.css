@@ -1,7 +1,14 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
   background: #f5f5f5;
   padding: 40px 0;
+  margin: 0;
 }
 
 .container {
@@ -20,21 +27,33 @@ form {
   gap: 12px;
 }
 
+form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+
 input,
 textarea {
   width: 100%;
   padding: 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
+  font: inherit;
+  resize: vertical;
 }
 
+/* Submit button aligned and not overflowing */
 button {
+  align-self: flex-end; /* button stays aligned to the right */
   background: #333;
   color: white;
-  padding: 10px;
+  padding: 10px 16px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font: inherit;
 }
 
 button:hover {
@@ -48,11 +67,35 @@ button:hover {
 #messagesList {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 #messagesList li {
-  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
   background: #eee;
-  border-radius: 6px;
   margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+#messagesList li span {
+  flex: 1;
+  margin-right: 10px;
+  word-break: break-word;
+}
+
+#messagesList li button {
+  padding: 4px 8px;
+  background: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+#messagesList li button:hover {
+  background: #c9302c;
 }
