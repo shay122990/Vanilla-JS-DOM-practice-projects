@@ -76,5 +76,9 @@ export const projects = [
     title: 'Disco Lights Remote',
     link: './projects/disco-lights-remote/index.html',
   },
+  {
+    title: 'Message From',
+    link: './projects/message-form/index.html',
+  },
   // will add more projects here
 ];

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Message Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Leave a Message</h1>
+
+      <form id="messageForm">
+        <label>
+          Name:
+          <input type="text" id="nameInput" required />
+        </label>
+
+        <label>
+          Message:
+          <textarea id="messageInput" rows="4" required></textarea>
+        </label>
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <section class="messages">
+        <h2>Messages</h2>
+        <ul id="messagesList"></ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
