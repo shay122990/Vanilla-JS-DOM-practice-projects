@@ -1,8 +1,39 @@
 'use strict';
+
 const messageForm = document.getElementById('messageForm');
 const nameInput = document.getElementById('nameInput');
 const messageInput = document.getElementById('messageInput');
 const messagesList = document.getElementById('messagesList');
+
+const formError = document.createElement('p');
+formError.id = 'formError';
+formError.className = 'error-message';
+formError.setAttribute('aria-live', 'polite');
+messageForm.appendChild(formError);
+
+function clearErrors() {
+  formError.textContent = '';
+  nameInput.classList.remove('field-error');
+  messageInput.classList.remove('field-error');
+}
+
+function showErrors({ nameEmpty, messageEmpty }) {
+  const messages = [];
+
+  if (nameEmpty) {
+    nameInput.classList.add('field-error');
+    messages.push('Name is required');
+  }
+
+  if (messageEmpty) {
+    messageInput.classList.add('field-error');
+    messages.push('Message is required');
+  }
+
+  if (messages.length > 0) {
+    formError.textContent = messages.join('. ') + '.';
+  }
+}
 
 function createMessageElement(name, message) {
   const li = document.createElement('li');
@@ -23,9 +54,18 @@ function createMessageElement(name, message) {
 
 messageForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  clearErrors();
 
-  const getName = nameInput.value;
-  const getMessage = messageInput.value;
+  const getName = nameInput.value.trim();
+  const getMessage = messageInput.value.trim();
+
+  const nameEmpty = getName === '';
+  const messageEmpty = getMessage === '';
+
+  if (nameEmpty || messageEmpty) {
+    showErrors({ nameEmpty, messageEmpty });
+    return;
+  }
 
   const li = createMessageElement(getName, getMessage);
   messagesList.appendChild(li);
@@ -40,3 +80,7 @@ messagesList.addEventListener('click', (e) => {
     if (li) li.remove();
   }
 });
+
+TODO;
+// date/time for each message
+// save to localstorage

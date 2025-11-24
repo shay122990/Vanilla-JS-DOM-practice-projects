@@ -99,3 +99,13 @@ button:hover {
 #messagesList li button:hover {
   background: #c9302c;
 }
+.field-error {
+  border-color: #d00;
+  outline-color: #d00;
+}
+
+.error-message {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #d00;
+}
