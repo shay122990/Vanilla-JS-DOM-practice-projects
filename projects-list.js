@@ -80,5 +80,9 @@ export const projects = [
     title: 'Message From',
     link: './projects/message-form/index.html',
   },
+  {
+    title: 'Emoji Reaction',
+    link: './projects/emoji-reaction/index.html',
+  },
   // will add more projects here
 ];

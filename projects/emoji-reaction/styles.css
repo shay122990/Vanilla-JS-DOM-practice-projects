@@ -1,0 +1,246 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+  color: #111827;
+}
+
+.app {
+  width: 100%;
+  max-width: 600px;
+  background: #ffffff;
+  padding: 24px 22px 26px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+  animation: fadeIn 0.35s ease-out;
+}
+
+.app-title {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.new-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.comment-input {
+  width: 100%;
+  resize: vertical;
+  min-height: 70px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1.5px solid #d1d5db;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comment-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+.btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: background 0.2s ease, transform 0.08s ease, box-shadow 0.1s ease;
+}
+
+.btn.primary {
+  background: #6366f1;
+  color: #ffffff;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+}
+
+.btn.primary:hover {
+  background: #4f46e5;
+}
+
+.btn.primary:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.2);
+}
+
+.comments-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.comment {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.comment:last-child {
+  border-bottom: none;
+}
+
+.comment-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #4b5563;
+  flex-shrink: 0;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.comment-author {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.comment-time {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.comment-text {
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 8px 10px;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.comment-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 2px;
+}
+
+.react-toggle {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 13px;
+  color: #6b7280;
+  cursor: pointer;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.react-toggle::before {
+  content: '😊';
+  font-size: 14px;
+}
+
+.reaction-bar {
+  display: none; /* JS  toggle to flex*/
+  gap: 6px;
+  padding: 4px 6px;
+  border-radius: 999px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  width: fit-content;
+}
+
+.reaction-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 2px 4px;
+  transition: transform 0.1s ease, background 0.1s ease;
+  border-radius: 999px;
+}
+
+.reaction-btn:hover {
+  transform: translateY(-1px) scale(1.08);
+  background: #e5e7eb;
+}
+
+/* Summary row under the comment: small chips with counts */
+.reaction-summary {
+  display: flex;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.reaction-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: #eef2ff;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.reaction-count {
+  font-weight: 600;
+}
+
+/* Optional: highlight when there are reactions */
+.comment.has-reactions .comment-text {
+  border: 1px solid #c7d2fe;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 20px 16px 22px;
+  }
+
+  .comment-text {
+    font-size: 13px;
+  }
+
+  .reaction-btn {
+    font-size: 17px;
+  }
+}

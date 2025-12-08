@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emoji Comment Reactions</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <h1 class="app-title">Comments with Emoji Reactions</h1>
+
+      <section class="new-comment">
+        <textarea
+          id="commentInput"
+          class="comment-input"
+          rows="3"
+          placeholder="Write a comment..."
+        ></textarea>
+        <button id="addCommentBtn" class="btn primary">Post</button>
+      </section>
+
+      <ul id="commentsList" class="comments-list">
+        <li class="comment">
+          <div class="comment-avatar">A</div>
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-author">Alex</span>
+              <span class="comment-time">Just now</span>
+            </div>
+            <p class="comment-text">
+              This project looks fun! I love working with DOM events.
+            </p>
+
+            <div class="comment-footer">
+              <button class="react-toggle" type="button">React</button>
+
+              <div class="reaction-bar">
+                <button class="reaction-btn" data-emoji="👍" type="button">
+                  👍
+                </button>
+                <button class="reaction-btn" data-emoji="❤️" type="button">
+                  ❤️
+                </button>
+                <button class="reaction-btn" data-emoji="😂" type="button">
+                  😂
+                </button>
+                <button class="reaction-btn" data-emoji="😮" type="button">
+                  😮
+                </button>
+                <button class="reaction-btn" data-emoji="😢" type="button">
+                  😢
+                </button>
+              </div>
+
+              <div class="reaction-summary">
+                <!-- will update with js -->
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="comment">
+          <div class="comment-avatar">S</div>
+          <div class="comment-content">
+            <div class="comment-header">
+              <span class="comment-author">Sam</span>
+              <span class="comment-time">2 min ago</span>
+            </div>
+            <p class="comment-text">
+              Try adding keyboard support for reactions later as a challenge.
+            </p>
+
+            <div class="comment-footer">
+              <button class="react-toggle" type="button">React</button>
+
+              <div class="reaction-bar">
+                <button class="reaction-btn" data-emoji="👍" type="button">
+                  👍
+                </button>
+                <button class="reaction-btn" data-emoji="❤️" type="button">
+                  ❤️
+                </button>
+                <button class="reaction-btn" data-emoji="😂" type="button">
+                  😂
+                </button>
+                <button class="reaction-btn" data-emoji="😮" type="button">
+                  😮
+                </button>
+                <button class="reaction-btn" data-emoji="😢" type="button">
+                  😢
+                </button>
+              </div>
+
+              <div class="reaction-summary"></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
