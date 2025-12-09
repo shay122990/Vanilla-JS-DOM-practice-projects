@@ -84,5 +84,9 @@ export const projects = [
     title: 'Emoji Reaction',
     link: './projects/emoji-reaction/index.html',
   },
+  {
+    title: 'Calculator',
+    link: './projects/calculator/index.html',
+  },
   // will add more projects here
 ];
