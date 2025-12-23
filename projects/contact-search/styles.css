@@ -37,6 +37,7 @@ body {
   padding: 28px 14px;
 }
 
+/* UPDATED: fixed/stable app height + grid layout */
 .app {
   width: min(920px, 100%);
   background: rgba(18, 22, 33, 0.72);
@@ -45,6 +46,10 @@ body {
   box-shadow: var(--shadow);
   backdrop-filter: blur(10px);
   overflow: hidden;
+
+  height: min(780px, calc(100vh - 56px));
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
 }
 
 .header {
@@ -134,6 +139,8 @@ input:focus {
 
 .listSection {
   padding: 16px 22px 22px;
+  min-height: 0;
+  overflow: auto;
 }
 
 .list {
@@ -142,6 +149,7 @@ input:focus {
   padding: 0;
   display: grid;
   gap: 10px;
+  align-content: start;
 }
 
 .card {
@@ -217,4 +225,9 @@ input:focus {
   padding: 14px 22px;
   border-top: 1px solid var(--border);
   background: rgba(15, 19, 32, 0.55);
+}
+
+/* Optional: if you switch JS to use hidden instead of display:none */
+.card[hidden] {
+  display: none;
 }
