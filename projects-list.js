@@ -88,5 +88,9 @@ export const projects = [
     title: 'Calculator',
     link: './projects/calculator/index.html',
   },
+  {
+    title: 'Contact Search',
+    link: './projects/contact-search/index.html',
+  },
   // will add more projects here
 ];

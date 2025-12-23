@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Search</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app" aria-labelledby="app-title">
+      <header class="header">
+        <div>
+          <h1 id="app-title">Contacts</h1>
+          <p class="sub">Search by name, role, or company</p>
+        </div>
+      </header>
+
+      <section class="toolbar" aria-label="Search and actions">
+        <label class="field" for="searchInput">
+          <span class="label">Search</span>
+          <div class="inputWrap">
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="e.g. sara, designer, acme…"
+              autocomplete="off"
+              aria-describedby="helpText"
+            />
+            <button id="clearBtn" class="btn btn-ghost" type="button">
+              Clear
+            </button>
+          </div>
+          <span id="helpText" class="help">Tip: try “dev” or “acme”.</span>
+        </label>
+
+        <div class="meta" aria-live="polite">
+          <span id="resultCount" class="pill">8 results</span>
+          <span id="activeQuery" class="muted"></span>
+        </div>
+      </section>
+
+      <section class="listSection" aria-label="Contacts list">
+        <ul id="contactList" class="list" role="list">
+          <!--  starter items -->
+          <li
+            class="card"
+            data-name="Sara Ali"
+            data-role="Designer"
+            data-company="Acme Studio"
+          >
+            <div class="avatar" aria-hidden="true">SA</div>
+            <div class="info">
+              <h2 class="name">Sara Ali</h2>
+              <p class="desc">
+                <span class="role">Designer</span> ·
+                <span class="company">Acme Studio</span>
+              </p>
+            </div>
+            <button class="btn btn-small" type="button">View</button>
+          </li>
+
+          <li
+            class="card"
+            data-name="Omar Khan"
+            data-role="Frontend Developer"
+            data-company="Blue Harbor"
+          >
+            <div class="avatar" aria-hidden="true">OK</div>
+            <div class="info">
+              <h2 class="name">Omar Khan</h2>
+              <p class="desc">
+                <span class="role">Frontend Developer</span> ·
+                <span class="company">Blue Harbor</span>
+              </p>
+            </div>
+            <button class="btn btn-small" type="button">View</button>
+          </li>
+
+          <li
+            class="card"
+            data-name="Maya Chen"
+            data-role="Product Manager"
+            data-company="Acme Studio"
+          >
+            <div class="avatar" aria-hidden="true">MC</div>
+            <div class="info">
+              <h2 class="name">Maya Chen</h2>
+              <p class="desc">
+                <span class="role">Product Manager</span> ·
+                <span class="company">Acme Studio</span>
+              </p>
+            </div>
+            <button class="btn btn-small" type="button">View</button>
+          </li>
+
+          <li
+            class="card"
+            data-name="Noah Patel"
+            data-role="QA Engineer"
+            data-company="Northwind"
+          >
+            <div class="avatar" aria-hidden="true">NP</div>
+            <div class="info">
+              <h2 class="name">Noah Patel</h2>
+              <p class="desc">
+                <span class="role">QA Engineer</span> ·
+                <span class="company">Northwind</span>
+              </p>
+            </div>
+            <button class="btn btn-small" type="button">View</button>
+          </li>
+
+          <li
+            class="card"
+            data-name="Lina Haddad"
+            data-role="Data Analyst"
+            data-company="Desert Labs"
+          >
+            <div class="avatar" aria-hidden="true">LH</div>
+            <div class="info">
+              <h2 class="name">Lina Haddad</h2>
+              <p class="desc">
+                <span class="role">Data Analyst</span> ·
+                <span class="company">Desert Labs</span>
+              </p>
+            </div>
+            <button class="btn btn-small" type="button">View</button>
+          </li>
+
+          <li
+            class="card"
+            data-name="Yusuf Noor"
+            data-role="Backend Developer"
+            data-company="Blue Harbor"
+          >
+            <div class="avatar" aria-hidden="true">YN</div>
+            <div class="info">
+              <h2 class="name">Yusuf Noor</h2>
+              <p class="desc">
+                <span class="role">Backend Developer</span> ·
+                <span class="company">Blue Harbor</span>
+              </p>
+            </div>
+            <button class="btn btn-small" type="button">View</button>
+          </li>
+
+          <li
+            class="card"
+            data-name="Aisha Rahman"
+            data-role="UX Researcher"
+            data-company="Crescent"
+          >
+            <div class="avatar" aria-hidden="true">AR</div>
+            <div class="info">
+              <h2 class="name">Aisha Rahman</h2>
+              <p class="desc">
+                <span class="role">UX Researcher</span> ·
+                <span class="company">Crescent</span>
+              </p>
+            </div>
+            <button class="btn btn-small" type="button">View</button>
+          </li>
+
+          <li
+            class="card"
+            data-name="Daniel Park"
+            data-role="DevOps"
+            data-company="Northwind"
+          >
+            <div class="avatar" aria-hidden="true">DP</div>
+            <div class="info">
+              <h2 class="name">Daniel Park</h2>
+              <p class="desc">
+                <span class="role">DevOps</span> ·
+                <span class="company">Northwind</span>
+              </p>
+            </div>
+            <button class="btn btn-small" type="button">View</button>
+          </li>
+        </ul>
+
+        <div id="emptyState" class="empty" hidden>
+          <h2>No matches</h2>
+          <p>Try a different keyword.</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p class="muted">filter + highlight + clear + empty state.</p>
+      </footer>
+    </main>
+  </body>
+</html>
