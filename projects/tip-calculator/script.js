@@ -13,11 +13,14 @@ calcBtn.addEventListener('click', function () {
   const tip = parseFloat(tipInput.value);
 
   if (isNaN(bill) || isNaN(tip) || bill <= 0 || tip < 0) {
-    error.hidden = false;
+    errorText.hidden = false;
     tipText.textContent = 'Tip: $0.00';
     totalText.textContent = 'Total: $0.00';
+    totalText.style.color = 'var(--text)';
+    return;
   }
-  error.hidden = true;
+
+  errorText.hidden = true;
 
   const tipAmount = (bill * tip) / 100;
   const totalAmount = bill + tipAmount;
@@ -25,11 +28,7 @@ calcBtn.addEventListener('click', function () {
   tipText.textContent = 'Tip: $' + tipAmount.toFixed(2);
   totalText.textContent = 'Total: $' + totalAmount.toFixed(2);
 
-  if (totalAmount > 100) {
-    totalText.style.color = '#55efc4';
-  } else {
-    totalText.style.color = 'var(--text)';
-  }
+  totalText.style.color = totalAmount > 100 ? '#55efc4' : 'var(--text)';
 });
 
 resetBtn.addEventListener('click', function () {
@@ -38,5 +37,5 @@ resetBtn.addEventListener('click', function () {
   tipText.textContent = 'Tip: $0.00';
   totalText.textContent = 'Total: $0.00';
   totalText.style.color = 'var(--text)';
-  error.hidden = true;
+  errorText.hidden = true;
 });

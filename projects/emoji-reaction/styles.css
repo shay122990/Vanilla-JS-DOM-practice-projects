@@ -1,24 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-}
-
-body {
-  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 40px 16px;
-  color: #111827;
-}
-
 .app {
   width: 100%;
   max-width: 600px;
   background: #ffffff;
+  color: var(--bg);
   padding: 24px 22px 26px;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);

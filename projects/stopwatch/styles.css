@@ -1,36 +1,9 @@
-:root {
-  --bg: #0b0d14;
-  --card: #101625;
-  --text: #e6e9f2;
-  --muted: #9aa3b2;
-  --border: #1b2740;
-}
-
-* {
-  box-sizing: border-box;
-}
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: system-ui, Segoe UI, Inter, Arial, sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-
 .container {
   width: min(700px, 96%);
 }
 
 .card {
-  background: var(--card);
-  border: 1px solid var(--border);
+  background: var(--bg);
   border-radius: 14px;
   padding: 20px;
 }

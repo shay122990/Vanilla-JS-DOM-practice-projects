@@ -1,25 +1,5 @@
 :root {
-  --bg: #0b0d14;
-  --text: #e6e9f2;
-  --card: #101625;
   --green: #22c55e;
-  --red: #ef4444;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: system-ui, Segoe UI, Inter, Arial;
-}
-
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--bg);
-  color: var(--text);
 }
 
 .game-container {
@@ -36,8 +16,8 @@ h1 {
   height: 200px;
   line-height: 200px;
   margin: 0 auto 20px;
-  background: var(--red);
-  color: var(--text);
+  background: red;
+  color: white;
   border-radius: 12px;
   font-size: 1.5rem;
   user-select: none;
@@ -52,8 +32,8 @@ h1 {
 }
 
 button {
-  background: var(--card);
-  color: var(--text);
+  background: #101625;
+  color: white;
   border: 1px solid #1b2740;
   border-radius: 8px;
   padding: 10px 16px;

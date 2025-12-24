@@ -53,15 +53,6 @@ body {
   place-items: start center;
 }
 
-.glass {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
 a {
   color: inherit;
 }

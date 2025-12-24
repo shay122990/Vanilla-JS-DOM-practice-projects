@@ -1,16 +1,7 @@
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #89f7fe, #66a6ff);
-  color: #333;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .container {
   text-align: center;
   background: white;
+  color: #666;
   padding: 2rem 3rem;
   border-radius: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);

@@ -1,23 +1,8 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
-    sans-serif;
-  text-align: center;
-  margin: 0;
-  padding: 24px;
-  background: white;
-  transition: background 0.5s ease;
-  color: #0f172a;
-  height: 100vh;
-}
-
 h1 {
   margin-bottom: 18px;
   font-weight: 800;
   letter-spacing: -0.02em;
+  color: var(--bg);
 }
 
 .container {
@@ -98,10 +83,9 @@ h1 {
   display: inline-block;
   margin-top: 14px;
   font-size: 18px;
-  padding: 8px 14px;
+  padding: 10px 14px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.85) inset;
+  background: var(--bg);
 }
 
 #resetBtn {
