@@ -4,7 +4,7 @@ import cors from 'cors';
 
 const app = express();
 const PORT = 3000;
-
+// to make it work run node server.js
 // Enable CORS for all origins
 app.use(
   cors({
