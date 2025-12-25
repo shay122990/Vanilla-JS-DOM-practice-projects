@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do</title>
+    <link rel="stylesheet" href="../../site.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="top">
+        <div>
+          <h1>To-Do</h1>
+          <p class="muted">Add, complete, edit, delete, filter, persist.</p>
+        </div>
+
+        <div class="stats" aria-live="polite">
+          <span id="items-left">0 left</span>
+          <span class="dot">•</span>
+          <span id="items-total">0 total</span>
+        </div>
+      </header>
+
+      <section class="card">
+        <form id="todo-form" autocomplete="off">
+          <label class="sr-only" for="todo-input">Add a task</label>
+          <div class="row">
+            <input
+              id="todo-input"
+              type="text"
+              placeholder="Add a task…"
+              maxlength="60"
+            />
+            <button id="add-btn" type="submit">Add</button>
+          </div>
+          <p class="hint">
+            Enter to add • Double-click a task to edit • Esc to cancel edit
+          </p>
+        </form>
+
+        <div class="controls">
+          <div class="filters" role="tablist" aria-label="Filters">
+            <button class="chip is-active" data-filter="all" type="button">
+              All
+            </button>
+            <button class="chip" data-filter="active" type="button">
+              Active
+            </button>
+            <button class="chip" data-filter="completed" type="button">
+              Completed
+            </button>
+          </div>
+
+          <div class="actions">
+            <button id="toggle-all" type="button" class="ghost">
+              Toggle all
+            </button>
+            <button id="clear-completed" type="button" class="danger ghost">
+              Clear completed
+            </button>
+          </div>
+        </div>
+
+        <ul id="todo-list" class="list" aria-label="Todo items">
+          <!-- JS renders <li> items here -->
+        </ul>
+
+        <div id="empty-state" class="empty hidden" aria-live="polite">
+          <div class="empty-icon">🧹</div>
+          <p><strong>No tasks here.</strong></p>
+          <p class="muted">Add one above to get started.</p>
+        </div>
+      </section>
+
+      <footer class="footer muted">
+        <span>Keyboard:</span>
+        <span class="kbd">Enter</span> add, <span class="kbd">E</span> edit
+        (focused), <span class="kbd">Del</span> delete (focused)
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

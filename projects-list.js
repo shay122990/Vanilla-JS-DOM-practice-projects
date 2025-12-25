@@ -92,5 +92,9 @@ export const projects = [
     title: 'Contact Search',
     link: './projects/contact-search/index.html',
   },
+  {
+    title: 'To-Do',
+    link: './projects/to-do/index.html',
+  },
   // will add more projects here
 ];
