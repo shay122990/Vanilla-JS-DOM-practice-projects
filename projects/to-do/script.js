@@ -4,7 +4,18 @@ const form = document.getElementById('todo-form');
 const input = document.getElementById('todo-input');
 const list = document.getElementById('todo-list');
 
-const todos = [];
+const STORAGE_KEY = 'todos_v1';
+
+let todos = loadTodos();
+
+function loadTodos() {
+  const stored = localStorage.getItem(STORAGE_KEY);
+  return stored ? JSON.parse(stored) : [];
+}
+
+function saveTodos() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+}
 
 function render() {
   list.innerHTML = '';
@@ -21,6 +32,7 @@ function addTodo(text) {
   if (!trimmed) return;
 
   todos.push(trimmed);
+  saveTodos();
   render();
 }
 
@@ -30,3 +42,5 @@ form.addEventListener('submit', function (e) {
   input.value = '';
   input.focus();
 });
+
+render();
