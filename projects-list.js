@@ -96,5 +96,9 @@ export const projects = [
     title: 'To-Do',
     link: './projects/to-do/index.html',
   },
+  {
+    title: 'Date Countdown Timer',
+    link: './projects/date-countdown-timer/index.html',
+  },
   // will add more projects here
 ];

@@ -1,0 +1,153 @@
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 18px 32px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.title {
+  margin: 0;
+  font-size: 40px;
+  letter-spacing: 0.2px;
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+
+.card {
+  margin-top: 26px;
+  background: linear-gradient(180deg, var(--card), var(--card2));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.label {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.input {
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  outline: none;
+}
+
+.input:focus {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-ghost {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.hint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.display {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.unit {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px 10px;
+  background: rgba(0, 0, 0, 0.18);
+  text-align: center;
+}
+
+.num {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+}
+
+.txt {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.status {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.msg {
+  margin: 0;
+  color: var(--muted);
+}
+
+.footer {
+  margin-top: 18px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .display {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .title {
+    font-size: 34px;
+  }
+}

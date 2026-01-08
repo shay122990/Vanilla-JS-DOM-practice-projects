@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date Countdown Timer</title>
+    <link rel="stylesheet" href="/site.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="header">
+        <h1 class="title">Countdown</h1>
+        <p class="subtitle">Pick a date & time, then watch it count down.</p>
+      </header>
+
+      <section class="card">
+        <form class="form" id="countdownForm" novalidate>
+          <label class="field">
+            <span class="label">Target date & time</span>
+            <input
+              class="input"
+              id="targetInput"
+              name="target"
+              type="datetime-local"
+              required
+            />
+          </label>
+
+          <div class="actions">
+            <button class="btn" id="startBtn" type="submit">Start</button>
+            <button class="btn btn-ghost" id="resetBtn" type="button">
+              Reset
+            </button>
+          </div>
+
+          <p class="hint" id="hint">Tip: choose a future date/time.</p>
+        </form>
+
+        <div class="display" aria-live="polite">
+          <div class="unit">
+            <div class="num" id="days">00</div>
+            <div class="txt">Days</div>
+          </div>
+          <div class="unit">
+            <div class="num" id="hours">00</div>
+            <div class="txt">Hours</div>
+          </div>
+          <div class="unit">
+            <div class="num" id="minutes">00</div>
+            <div class="txt">Minutes</div>
+          </div>
+          <div class="unit">
+            <div class="num" id="seconds">00</div>
+            <div class="txt">Seconds</div>
+          </div>
+        </div>
+
+        <div class="status">
+          <p class="msg" id="msg">Not started.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
