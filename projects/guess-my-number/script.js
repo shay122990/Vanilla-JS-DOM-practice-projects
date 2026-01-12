@@ -16,7 +16,7 @@ highScoreEl.textContent = highScore;
 
 const randomNumberGenerator = function () {
   const randomNum = Math.trunc(Math.random() * 20) + 1;
-  console.log(randomNum);
+  // console.log(randomNum);
   return randomNum;
 };
 let randomResult = randomNumberGenerator();

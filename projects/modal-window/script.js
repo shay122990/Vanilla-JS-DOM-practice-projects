@@ -9,18 +9,23 @@ const openModal = function () {
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 };
-for (let i = 0; i < openModalBtns.length; i++) {
-  const btn = openModalBtns[i];
-  btn.addEventListener('click', openModal);
-}
 const closeModal = function () {
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
 };
+
+for (let i = 0; i < openModalBtns.length; i++) {
+  openModalBtns[i].addEventListener('click', openModal);
+}
+
 closeModalBtn.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+
+// “The document is a global object provided by the browser that represents the DOM. It exposes methods like addEventListener, which allows us to listen for events happening anywhere on the page. When a keydown event occurs, the browser executes the callback function and passes an event object that contains information about what happened, such as which key was pressed. We can then read and use those event properties to control our application logic.”
+document.addEventListener('keydown', function (event) {
+  // console.log(event);
+
+  if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
     closeModal();
   }
 });
