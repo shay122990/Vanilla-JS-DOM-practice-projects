@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Menu Order Board</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../site.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div>
+          <h1>Smart Menu Order Board</h1>
+          <p class="sub">
+            Filter, search, add to order, adjust quantities, apply promo.
+          </p>
+        </div>
+
+        <div class="search">
+          <label class="label" for="searchInput">Search</label>
+          <input
+            id="searchInput"
+            class="input"
+            type="text"
+            placeholder="e.g. Pizza, Garlic..."
+            autocomplete="off"
+          />
+        </div>
+      </header>
+
+      <section class="controls">
+        <div class="filters" role="group" aria-label="Category filters">
+          <button class="chip chip--active" data-filter="all">All</button>
+          <button class="chip" data-filter="starter">Starter</button>
+          <button class="chip" data-filter="main">Main</button>
+          <button class="chip" data-filter="dessert">Dessert</button>
+        </div>
+
+        <div class="meta">
+          <div class="pill">Items shown: <span id="itemsShown">0</span></div>
+          <div class="pill">In order: <span id="itemsInOrder">0</span></div>
+        </div>
+      </section>
+
+      <main class="grid">
+        <section class="menu">
+          <div class="menu__header">
+            <h2>Menu</h2>
+            <p class="hint">Click “Add” to build your order.</p>
+          </div>
+
+          <div id="menuList" class="menu__list" aria-live="polite">
+            <!-- JS renders cards -->
+          </div>
+        </section>
+
+        <aside class="order">
+          <div class="order__header">
+            <h2>Your Order</h2>
+            <button id="clearOrder" class="btn btn--ghost" type="button">
+              Clear
+            </button>
+          </div>
+
+          <ul id="orderList" class="order__list">
+            <!-- JS renders order items -->
+          </ul>
+
+          <div class="promo">
+            <label class="label" for="promoInput">Promo code</label>
+            <div class="promo__row">
+              <input
+                id="promoInput"
+                class="input"
+                type="text"
+                placeholder="Try SAVE10"
+              />
+              <button id="applyPromo" class="btn" type="button">Apply</button>
+            </div>
+            <p id="promoMsg" class="promo__msg" aria-live="polite"></p>
+          </div>
+
+          <div class="totals">
+            <div class="line">
+              <span>Subtotal</span>
+              <strong id="subtotal">AED 0</strong>
+            </div>
+            <div class="line">
+              <span>VAT (5%)</span>
+              <strong id="vat">AED 0</strong>
+            </div>
+            <div class="line line--total">
+              <span>Total</span>
+              <strong id="total">AED 0</strong>
+            </div>
+
+            <button id="checkout" class="btn btn--primary" type="button">
+              Checkout
+            </button>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

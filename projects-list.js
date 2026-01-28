@@ -100,5 +100,13 @@ export const projects = [
     title: 'Date Countdown Timer',
     link: './projects/date-countdown-timer/index.html',
   },
+  {
+    title: 'Inflate Baloons',
+    link: './projects/inflate-baloons/index.html',
+  },
+  {
+    title: 'Smart Menu',
+    link: './projects/smart-menu/index.html',
+  },
   // will add more projects here
 ];
