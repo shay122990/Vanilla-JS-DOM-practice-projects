@@ -108,5 +108,9 @@ export const projects = [
     title: 'Smart Menu',
     link: './projects/smart-menu/index.html',
   },
+  {
+    title: 'Bankist',
+    link: './projects/bankist/index.html',
+  },
   // will add more projects here
 ];
