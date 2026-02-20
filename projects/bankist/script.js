@@ -57,6 +57,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+// displaying money moves
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
   movements.forEach(function (mov, i) {
@@ -71,4 +72,22 @@ const displayMovements = function (movements) {
   });
 };
 displayMovements(account1.movements);
-console.log(containerMovements.innerHTML);
+
+const calcPrintBalance = function (movements) {
+  const balance = movements.reduce((acc, cur) => acc + cur, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcPrintBalance(account1.movements);
+
+// creating usernames for all accounts
+const createUserNames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map((n) => n[0])
+      .join('');
+  });
+};
+console.log(accounts);
+console.log(createUserNames(accounts));
