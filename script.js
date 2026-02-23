@@ -16,3 +16,7 @@ projects.forEach((p) => {
 
   grid.appendChild(card);
 });
+// TO-DO
+//1. add filter for projects
+//2. either pagination or scrollable container
+//3. more visible UI
