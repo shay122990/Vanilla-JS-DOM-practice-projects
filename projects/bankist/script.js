@@ -30,9 +30,11 @@ const account4 = {
 };
 
 const accounts = [account1, account2, account3, account4];
-console.log(accounts);
+// console.log(accounts);
 
 let currentAccount;
+
+let sorted = false; // toggle state
 
 //labels
 const labelWelcome = document.querySelector('.welcome');
@@ -61,20 +63,26 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 // DISPLAYING IN AND OUT MOVEMENTS
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
-  movements.forEach(function (mov, i) {
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
+
     const html = `
       <div class="movements__row">
-          <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
-          <div class="movements__value">${mov}€</div>
-        </div>
+        <div class="movements__type movements__type--${type}">${
+          i + 1
+        } ${type}</div>
+        <div class="movements__value">${mov}€</div>
+      </div>
     `;
+
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-
 // DISPLAYING TOTAL BALANCE
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, cur) => acc + cur, 0);
@@ -120,13 +128,13 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
-// EVENT HANDLERS
+// LOGIN
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
   currentAccount = accounts.find(
     (acc) => acc.username === inputLoginUsername.value,
   );
-  // console.log(currentAccount);
+  console.log(currentAccount);
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     labelWelcome.textContent = `Welcome back ${currentAccount.owner.split(' ')[0]}`;
     containerApp.style.opacity = 100;
@@ -189,4 +197,11 @@ btnClose.addEventListener('click', function (e) {
     containerApp.style.opacity = 0;
   }
   inputCloseUsername.value = inputClosePin.value = '';
+});
+
+// SORT MOVEMENTS
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
