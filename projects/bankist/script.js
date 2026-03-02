@@ -34,7 +34,7 @@ const accounts = [account1, account2, account3, account4];
 
 let currentAccount;
 
-let sorted = false; // toggle state
+let sorted = false;
 
 //labels
 const labelWelcome = document.querySelector('.welcome');
