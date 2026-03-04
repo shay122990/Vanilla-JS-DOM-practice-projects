@@ -59,7 +59,6 @@ export const projects = [
     title: 'Colorful Boxes',
     link: './projects/colorful-boxes/index.html',
   },
-  { title: 'Restaurant Rush', link: './projects/restaurant-rush/index.html' },
   { title: 'Button Catcher', link: './projects/button-catcher/index.html' },
   {
     title: 'Reaction Time Tester',

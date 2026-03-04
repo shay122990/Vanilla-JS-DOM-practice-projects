@@ -152,7 +152,18 @@ h1 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
-
+.menu__list li {
+  display: flex;
+  justify-content: space-between;
+}
+.menu__list button {
+  border: 1px solid var(--stroke);
+  background: rgba(18, 26, 51, 0.65);
+  color: var(--muted);
+  padding: 9px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+}
 .card {
   border: 1px solid var(--stroke);
   background: rgba(15, 23, 48, 0.8);
@@ -250,40 +261,15 @@ h1 {
   list-style: none;
   margin: 0;
   padding: 12px 12px 0;
-  display: grid;
-  gap: 10px;
-}
-
-.orderItem {
-  border: 1px solid var(--stroke);
-  background: rgba(15, 23, 48, 0.75);
-  border-radius: 14px;
-  padding: 12px;
-  display: grid;
-  gap: 10px;
-}
-
-.orderItem__row {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  gap: 12px;
-  align-items: center;
 }
-
-.orderItem__title {
-  display: grid;
-  gap: 2px;
+.order__list li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-
-.orderItem__title strong {
-  font-size: 14px;
-}
-
-.orderItem__title span {
-  font-size: 12px;
-  color: var(--muted);
-}
-
 .qty {
   display: flex;
   align-items: center;

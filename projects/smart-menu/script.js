@@ -1,11 +1,10 @@
 'use strict';
+//// EVENT -> ACTION (mutate state) -> DERIVE (pure calc) -> RENDER (DOM)
 const restaurant = {
   id: 'classico-italiano',
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-
-  // ✅ one unified menu structure (easy to price + order + filter)
   menu: {
     starter: [
       {
@@ -37,7 +36,6 @@ const restaurant = {
         tags: ['veg', 'gluten-free'],
       },
     ],
-
     main: [
       {
         id: 'mn-1',
@@ -55,7 +53,6 @@ const restaurant = {
       },
       { id: 'mn-3', name: 'Risotto', price: 48, currency: 'AED', tags: [] },
     ],
-
     dessert: [
       {
         id: 'ds-1',
@@ -73,13 +70,8 @@ const restaurant = {
       },
     ],
   },
-
-  // ✅ optional: one flat list derived manually (helps if you want “all” without concat)
-  // items: [
-  //   { id:'st-1', name:'Focaccia', section:'starter', price:18, currency:'AED', tags:['veg'] },
-  //   ...
-  // ],
 };
+
 const menuBtns = document.querySelectorAll('.chip');
 const menuList = document.getElementById('menuList');
 const pillShownEl = document.getElementById('itemsShown');
@@ -88,78 +80,157 @@ const orderList = document.getElementById('orderList');
 const subtotalEl = document.getElementById('subtotal');
 const vatEl = document.getElementById('vat');
 const totalEl = document.getElementById('total');
+const promoInput = document.getElementById('promoInput');
+const promoApplyBtn = document.getElementById('applyPromo');
+const clearBtn = document.getElementById('clearOrder');
+const checkoutBtn = document.getElementById('checkout');
+const promoMsgEl = document.getElementById('promoMsg');
 
-let currentButton = 'all';
-let itemsShow = 0;
-let inOrder = 0;
-let order = [];
-let subtotal = 0;
-let total = 0;
-let vat = 0.5;
-let promoCode = 'SAVE10';
+const VAT_RATE = 0.05; // 5%
+const DISCOUNT_RATE = 0.1; // 10%
+const PROMO_CODE = 'SAVE10';
 
-const displayCategory = function (menuObj, key) {
-  const items =
-    key === 'all' ? Object.values(menuObj.menu).flat() : menuObj.menu[key];
-
-  renderMenuItems(items);
+const state = {
+  filter: 'all',
+  orderItems: [],
+  promoApplied: false,
 };
 
-const btnActions = {
-  all: () => displayCategory(restaurant, 'all'),
-  starter: () => displayCategory(restaurant, 'starter'),
-  main: () => displayCategory(restaurant, 'main'),
-  dessert: () => displayCategory(restaurant, 'dessert'),
+const getFilteredItems = (menuObj, key) => {
+  if (key === 'all') return Object.values(menuObj.menu).flat();
+  return menuObj.menu[key] ?? [];
 };
 
-const renderMenuItems = function (items) {
-  // menuList.innerHTML = '';
-  itemsShow = items.length;
-  pillShownEl.textContent = itemsShow;
+const money = (n) => `AED ${n}`;
+
+const renderMenu = (items) => {
+  menuList.innerHTML = '';
+  pillShownEl.textContent = items.length;
+
   items.forEach((item) => {
     const li = document.createElement('li');
     li.style.listStyleType = 'none';
-    console.log(item);
+
     const span = document.createElement('span');
     span.textContent = `${item.name} - ${item.price} ${item.currency}`;
 
     const addBtn = document.createElement('button');
+    addBtn.type = 'button';
     addBtn.innerText = 'ADD +';
+
+    addBtn.addEventListener('click', () => addToOrder(item));
 
     li.appendChild(span);
     li.appendChild(addBtn);
-
     menuList.appendChild(li);
-    addBtn.addEventListener('click', () => {
-      inOrder++;
-      pillOrderEl.textContent = inOrder;
-      const orderLi = document.createElement('li');
-      orderLi.textContent = `${item.name} - ${item.price} ${item.currency}`;
-      orderList.appendChild(orderLi);
-      order.push(item.price);
-      const sub = order.reduce((acc, cur) => acc + cur);
-      console.log(order, sub);
-      subtotalEl.textContent = `AED ${sub}`;
-      vatEl.textContent = `AED ${sub + vat}`;
-    });
   });
 };
 
-// initial render
-btnActions[currentButton]?.();
+const renderOrder = () => {
+  orderList.innerHTML = '';
+
+  state.orderItems.forEach((item) => {
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    li.textContent = `${item.name}`;
+    span.textContent = `${item.price} ${item.currency}`;
+    orderList.appendChild(li);
+    li.appendChild(span);
+  });
+};
+
+const renderPills = () => {
+  pillOrderEl.textContent = state.orderItems.length;
+};
+
+const computeSubtotal = () =>
+  state.orderItems.reduce((sum, item) => sum + item.price, 0);
+
+const computeTotals = () => {
+  const subtotal = state.orderItems.reduce((sum, item) => sum + item.price, 0);
+
+  const discountAmount = state.promoApplied ? subtotal * DISCOUNT_RATE : 0;
+  const discountedSubtotal = subtotal - discountAmount;
+
+  const vatAmount = discountedSubtotal * VAT_RATE;
+  const total = discountedSubtotal + vatAmount;
+
+  return { subtotal, discountAmount, vatAmount, total };
+};
+
+const renderTotals = () => {
+  const { subtotal, vatAmount, total } = computeTotals();
+
+  subtotalEl.textContent = `AED ${subtotal.toFixed(2)}`;
+  vatEl.textContent = `AED ${vatAmount.toFixed(2)}`;
+  totalEl.textContent = `AED ${total.toFixed(2)}`;
+};
+
+const updateUI = () => {
+  renderOrder();
+  renderPills();
+  renderTotals();
+};
+
+const setFilter = (key) => {
+  state.filter = key;
+  const items = getFilteredItems(restaurant, key);
+  renderMenu(items);
+};
+
+const addToOrder = (item) => {
+  state.orderItems.push(item);
+  updateUI();
+};
+
+const applyPromo = () => {
+  state.promoApplied = promoInput.value.trim() === PROMO_CODE;
+  updateUI();
+};
+
+setFilter(state.filter);
 
 menuBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
-    menuList.innerHTML = '';
     menuBtns.forEach((b) => b.classList.remove('chip--active'));
     btn.classList.add('chip--active');
-
-    currentButton = btn.dataset.filter; // 'all' | 'starter' | 'main' | 'dessert'
-
-    btnActions[currentButton]?.();
+    setFilter(btn.dataset.filter);
   });
 });
 
-// const calculateOrder = function(){
+if (promoApplyBtn) {
+  promoApplyBtn.addEventListener('click', applyPromo);
+}
 
-// }
+promoInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') applyPromo();
+});
+
+const clearOrder = () => {
+  state.orderItems = [];
+  state.promoApplied = false;
+  promoInput.value = '';
+  promoMsgEl.textContent = '';
+  updateUI();
+};
+clearBtn.addEventListener('click', clearOrder);
+
+const checkout = () => {
+  if (state.orderItems.length === 0) {
+    promoMsgEl.textContent = 'Your order is empty.';
+    return;
+  }
+
+  const { total } = computeTotals();
+
+  promoMsgEl.textContent = `Order placed ✅ Total: AED ${total.toFixed(2)}`;
+
+  // reset everything
+  state.orderItems = [];
+  state.promoApplied = false;
+  promoInput.value = '';
+
+  updateUI();
+};
+
+checkoutBtn.addEventListener('click', checkout);
