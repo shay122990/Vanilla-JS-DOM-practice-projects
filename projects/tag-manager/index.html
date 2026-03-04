@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tag Manager Sandbox</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <h1>Tag Manager</h1>
+      </header>
+
+      <!-- ADD -->
+      <section class="panel" aria-label="Add tag">
+        <h2>Add</h2>
+        <form id="formAdd" autocomplete="off">
+          <label class="label" for="inpTag">Tag</label>
+          <div class="row">
+            <input
+              id="inpTag"
+              name="tag"
+              type="text"
+              placeholder="e.g. javascript"
+              maxlength="30"
+            />
+            <button id="btnAdd" type="submit">Add</button>
+          </div>
+          <p id="msgAdd" class="msg" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <!-- CONTROLS -->
+      <section class="panel" aria-label="Controls">
+        <h2>Controls</h2>
+
+        <div class="grid">
+          <div>
+            <label class="label" for="inpSearch">Search</label>
+            <input id="inpSearch" type="search" placeholder="Search tags..." />
+          </div>
+
+          <div>
+            <label class="label" for="selSort">Sort</label>
+            <select id="selSort">
+              <option value="asc">A → Z</option>
+              <option value="desc">Z → A</option>
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="label" for="selView">View</label>
+            <select id="selView">
+              <option value="all">All</option>
+              <option value="selected">Selected</option>
+              <option value="unselected">Unselected</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row actions">
+          <button id="btnClearSelected" type="button">Clear selected</button>
+          <button id="btnReset" type="button">Reset all</button>
+          <button id="btnExportCSV" type="button">Export CSV</button>
+        </div>
+
+        <p id="msgControls" class="msg" aria-live="polite"></p>
+      </section>
+
+      <!-- STATS -->
+      <section class="panel" aria-label="Stats">
+        <h2>Stats</h2>
+        <dl class="stats">
+          <div>
+            <dt>Total</dt>
+            <dd id="statTotal">0</dd>
+          </div>
+          <div>
+            <dt>Visible</dt>
+            <dd id="statVisible">0</dd>
+          </div>
+          <div>
+            <dt>Selected</dt>
+            <dd id="statSelected">0</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- LIST -->
+      <section class="panel" aria-label="Tag list">
+        <div class="row listHeader">
+          <h2>Tags</h2>
+          <p id="emptyHint" class="hint">No tags yet — add one above.</p>
+        </div>
+
+        <ul id="tagList" class="list" aria-label="Tags"></ul>
+
+        <template id="tplTagItem">
+          <li class="item" data-id="">
+            <button class="tag" type="button" data-action="toggle">
+              <span class="tagText">tag</span>
+            </button>
+
+            <div class="itemActions">
+              <button class="mini" type="button" data-action="edit">
+                Edit
+              </button>
+              <button class="mini danger" type="button" data-action="remove">
+                Remove
+              </button>
+            </div>
+          </li>
+        </template>
+
+        <p id="msgList" class="msg" aria-live="polite"></p>
+      </section>
+
+      <!-- OUTPUT -->
+      <section class="panel" aria-label="Output">
+        <h2>Output</h2>
+        <p class="hint">
+          Use this area for UI feedback (CSV preview, last action message,
+          etc.).
+        </p>
+        <pre id="output" class="output" aria-live="polite"></pre>
+      </section>
+
+      <footer class="footer">
+        <small>
+          Tip: render() should be the only place that touches the DOM.
+        </small>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

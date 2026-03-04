@@ -111,5 +111,9 @@ export const projects = [
     title: 'Bankist',
     link: './projects/bankist/index.html',
   },
+  {
+    title: 'Tag-Manager',
+    link: './projects/tag-manager/index.html',
+  },
   // will add more projects here
 ];
