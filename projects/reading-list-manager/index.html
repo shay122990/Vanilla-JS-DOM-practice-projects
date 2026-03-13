@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading List Manager</title>
+    <link rel="stylesheet" href="../../site.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Vanilla JS DOM + OOP Practice</p>
+          <h1>Reading List Manager</h1>
+          <p class="hero-text">
+            Add books, mark them as read, filter your list, and manage your mini
+            library.
+          </p>
+        </div>
+
+        <div class="stats">
+          <article class="stat-card">
+            <span class="stat-label">Total</span>
+            <strong id="totalBooks">0</strong>
+          </article>
+
+          <article class="stat-card">
+            <span class="stat-label">Read</span>
+            <strong id="readBooks">0</strong>
+          </article>
+
+          <article class="stat-card">
+            <span class="stat-label">Unread</span>
+            <strong id="unreadBooks">0</strong>
+          </article>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel form-panel">
+          <h2>Add a Book</h2>
+
+          <form class="book-form" id="bookForm">
+            <div class="field">
+              <label for="title">Title</label>
+              <input
+                id="title"
+                name="title"
+                type="text"
+                placeholder="Atomic Habits"
+              />
+            </div>
+
+            <div class="field">
+              <label for="author">Author</label>
+              <input
+                id="author"
+                name="author"
+                type="text"
+                placeholder="James Clear"
+              />
+            </div>
+
+            <div class="field">
+              <label for="category">Category</label>
+              <select id="category" name="category">
+                <option value="">Choose category</option>
+                <option value="Self-Development">Self-Development</option>
+                <option value="Programming">Programming</option>
+                <option value="Design">Design</option>
+                <option value="Business">Business</option>
+                <option value="Fiction">Fiction</option>
+              </select>
+            </div>
+
+            <div class="field field-row">
+              <label class="checkbox">
+                <input id="isRead" name="isRead" type="checkbox" />
+                <span>Already read</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Book</button>
+          </form>
+        </section>
+
+        <section class="panel library-panel">
+          <div class="library-top">
+            <div>
+              <h2>Your Library</h2>
+              <p class="muted">
+                Search, filter, and update books in your collection.
+              </p>
+            </div>
+
+            <div class="controls">
+              <input
+                id="searchInput"
+                class="search-input"
+                type="text"
+                placeholder="Search by title or author"
+              />
+
+              <select id="filterSelect" class="filter-select">
+                <option value="all">All books</option>
+                <option value="read">Read</option>
+                <option value="unread">Unread</option>
+              </select>
+            </div>
+          </div>
+
+          <p id="emptyState" class="empty-state">
+            No books yet. Add your first one.
+          </p>
+
+          <div id="bookList" class="book-list">
+            <!-- JS renders book cards here -->
+          </div>
+        </section>
+      </main>
+
+      <template id="bookCardTemplate">
+        <article class="book-card">
+          <div class="book-card-top">
+            <div>
+              <span class="book-category">Programming</span>
+              <h3 class="book-title">Book Title</h3>
+              <p class="book-author">by Author Name</p>
+            </div>
+
+            <span class="book-status unread">Unread</span>
+          </div>
+
+          <div class="book-actions">
+            <button class="btn btn-secondary toggle-read-btn" type="button">
+              Toggle Read
+            </button>
+            <button class="btn btn-danger delete-btn" type="button">
+              Delete
+            </button>
+          </div>
+        </article>
+      </template>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

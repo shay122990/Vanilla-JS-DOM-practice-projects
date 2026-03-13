@@ -115,5 +115,9 @@ export const projects = [
     title: 'Tag-Manager',
     link: './projects/tag-manager/index.html',
   },
+  {
+    title: 'Reading-List-Manager-OOP',
+    link: './projects/reading-list-manager/index.html',
+  },
   // will add more projects here
 ];
