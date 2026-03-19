@@ -79,6 +79,9 @@ const titleInput = document.getElementById('title');
 const authorInput = document.getElementById('author');
 const categorySelect = document.getElementById('category');
 const isReadInput = document.getElementById('isRead');
+const totalBooksEl = document.getElementById('totalBooks');
+const readBooksEl = document.getElementById('readBooks');
+const unreadBooksEl = document.getElementById('unreadBooks');
 
 const Book = function (id, title, author, category, isRead) {
   this.id = id;
@@ -160,6 +163,17 @@ library.addBook(book2);
 
 console.log(library);
 
+const renderStats = function () {
+  const total = library.books.length;
+  const read = library.getReadBooks().length;
+  const unread = library.getUnreadBooks().length;
+
+  totalBooksEl.textContent = total;
+  readBooksEl.textContent = read;
+  unreadBooksEl.textContent = unread;
+};
+
+renderStats();
 bookForm.addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -183,4 +197,5 @@ bookForm.addEventListener('submit', function (e) {
   console.log(library);
 
   bookForm.reset();
+  renderStats();
 });
