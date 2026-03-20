@@ -79,9 +79,16 @@ const titleInput = document.getElementById('title');
 const authorInput = document.getElementById('author');
 const categorySelect = document.getElementById('category');
 const isReadInput = document.getElementById('isRead');
+
 const totalBooksEl = document.getElementById('totalBooks');
 const readBooksEl = document.getElementById('readBooks');
 const unreadBooksEl = document.getElementById('unreadBooks');
+
+const searchInput = document.getElementById('searchInput');
+const filterSelect = document.getElementById('filterSelect');
+const emptyState = document.getElementById('emptyState');
+const bookList = document.getElementById('bookList');
+const bookCardTemplate = document.getElementById('bookCardTemplate');
 
 const Book = function (id, title, author, category, isRead) {
   this.id = id;
@@ -110,9 +117,7 @@ Library.prototype.removeBook = function (id) {
 Library.prototype.toggleBookStatus = function (id) {
   const book = this.books.find((book) => book.id === id);
 
-  if (book) {
-    book.toggleRead();
-  }
+  if (book) book.toggleRead();
 };
 
 Library.prototype.getReadBooks = function () {
@@ -161,8 +166,6 @@ const book2 = new Book(
 library.addBook(book1);
 library.addBook(book2);
 
-console.log(library);
-
 const renderStats = function () {
   const total = library.books.length;
   const read = library.getReadBooks().length;
@@ -173,7 +176,73 @@ const renderStats = function () {
   unreadBooksEl.textContent = unread;
 };
 
-renderStats();
+const renderBooks = function () {
+  const filterValue = filterSelect.value;
+  const searchValue = searchInput.value;
+
+  const filteredBooks = library.getFilteredBooks(filterValue, searchValue);
+
+  bookList.innerHTML = '';
+
+  filteredBooks.forEach((book) => {
+    const bookCardFragment = bookCardTemplate.content.cloneNode(true);
+
+    const card = bookCardFragment.querySelector('.book-card');
+    const categoryEl = bookCardFragment.querySelector('.book-category');
+    const titleEl = bookCardFragment.querySelector('.book-title');
+    const authorEl = bookCardFragment.querySelector('.book-author');
+    const statusEl = bookCardFragment.querySelector('.book-status');
+    const toggleBtn = bookCardFragment.querySelector('.toggle-read-btn');
+    const deleteBtn = bookCardFragment.querySelector('.delete-btn');
+
+    card.dataset.id = book.id;
+    toggleBtn.dataset.id = book.id;
+    deleteBtn.dataset.id = book.id;
+
+    categoryEl.textContent = book.category;
+    titleEl.textContent = book.title;
+    authorEl.textContent = `by ${book.author}`;
+    statusEl.textContent = book.isRead ? 'Read' : 'Unread';
+
+    statusEl.classList.toggle('read', book.isRead);
+    statusEl.classList.toggle('unread', !book.isRead);
+
+    bookList.append(bookCardFragment);
+  });
+};
+
+bookList.addEventListener('click', function (e) {
+  const deleteBtn = e.target.closest('.delete-btn');
+  const toggleBtn = e.target.closest('.toggle-read-btn');
+
+  if (deleteBtn) {
+    const id = deleteBtn.dataset.id;
+    library.removeBook(id);
+    render();
+  }
+
+  if (toggleBtn) {
+    const id = toggleBtn.dataset.id;
+    library.toggleBookStatus(id);
+    render();
+  }
+});
+
+const renderEmptyState = function () {
+  const filterValue = filterSelect.value;
+  const searchValue = searchInput.value;
+
+  const filteredBooks = library.getFilteredBooks(filterValue, searchValue);
+
+  emptyState.style.display = filteredBooks.length === 0 ? 'block' : 'none';
+};
+
+const render = function () {
+  renderStats();
+  renderBooks();
+  renderEmptyState();
+};
+
 bookForm.addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -194,8 +263,16 @@ bookForm.addEventListener('submit', function (e) {
 
   library.addBook(newBook);
 
-  console.log(library);
-
   bookForm.reset();
-  renderStats();
+  render();
 });
+
+searchInput.addEventListener('input', function () {
+  render();
+});
+
+filterSelect.addEventListener('change', function () {
+  render();
+});
+
+render();
