@@ -1,78 +1,211 @@
 'use strict';
 
-// Classes
+// const bookForm = document.getElementById('bookForm');
+// const titleInput = document.getElementById('title');
+// const authorInput = document.getElementById('author');
+// const categorySelect = document.getElementById('category');
+// const isReadInput = document.getElementById('isRead');
 
-// Book
+// const totalBooksEl = document.getElementById('totalBooks');
+// const readBooksEl = document.getElementById('readBooks');
+// const unreadBooksEl = document.getElementById('unreadBooks');
 
-// Library
+// const searchInput = document.getElementById('searchInput');
+// const filterSelect = document.getElementById('filterSelect');
+// const emptyState = document.getElementById('emptyState');
+// const bookList = document.getElementById('bookList');
+// const bookCardTemplate = document.getElementById('bookCardTemplate');
 
-// Possible Book properties
+// const Book = function (id, title, author, category, isRead) {
+//   this.id = id;
+//   this.title = title;
+//   this.author = author;
+//   this.category = category;
+//   this.isRead = isRead;
+// };
 
-// id
+// Book.prototype.toggleRead = function () {
+//   this.isRead = !this.isRead;
+// };
 
-// title
+// const Library = function () {
+//   this.books = [];
+// };
 
-// author
+// Library.prototype.addBook = function (book) {
+//   this.books.push(book);
+// };
 
-// category
+// Library.prototype.removeBook = function (id) {
+//   this.books = this.books.filter((book) => book.id !== id);
+// };
 
-// isRead
+// Library.prototype.toggleBookStatus = function (id) {
+//   const book = this.books.find((book) => book.id === id);
 
-// Possible Book methods
+//   if (book) book.toggleRead();
+// };
 
-// toggleRead()
+// Library.prototype.getReadBooks = function () {
+//   return this.books.filter((book) => book.isRead);
+// };
 
-// Possible Library methods
+// Library.prototype.getUnreadBooks = function () {
+//   return this.books.filter((book) => !book.isRead);
+// };
 
-// addBook(book)
+// Library.prototype.getFilteredBooks = function (filterValue, searchValue) {
+//   const search = searchValue.toLowerCase().trim();
 
-// removeBook(id)
+//   return this.books.filter((book) => {
+//     const matchesFilter =
+//       filterValue === 'all' ||
+//       (filterValue === 'read' && book.isRead) ||
+//       (filterValue === 'unread' && !book.isRead);
 
-// toggleBookStatus(id)
+//     const matchesSearch =
+//       book.title.toLowerCase().includes(search) ||
+//       book.author.toLowerCase().includes(search);
 
-// getReadBooks()
+//     return matchesFilter && matchesSearch;
+//   });
+// };
 
-// getUnreadBooks()
+// const library = new Library();
 
-// getFilteredBooks(filterValue, searchValue)
+// const book1 = new Book(
+//   crypto.randomUUID(),
+//   'Atomic Habits',
+//   'James Clear',
+//   'Self-Development',
+//   true,
+// );
 
-// DOM practice
+// const book2 = new Book(
+//   crypto.randomUUID(),
+//   'Eloquent JavaScript',
+//   'Marijn Haverbeke',
+//   'Programming',
+//   false,
+// );
 
-// submit form
+// library.addBook(book1);
+// library.addBook(book2);
 
-// read values
+// const renderStats = function () {
+//   const total = library.books.length;
+//   const read = library.getReadBooks().length;
+//   const unread = library.getUnreadBooks().length;
 
-// create instances
+//   totalBooksEl.textContent = total;
+//   readBooksEl.textContent = read;
+//   unreadBooksEl.textContent = unread;
+// };
 
-// render cards
+// const renderBooks = function () {
+//   const filterValue = filterSelect.value;
+//   const searchValue = searchInput.value;
 
-// clear form
+//   const filteredBooks = library.getFilteredBooks(filterValue, searchValue);
 
-// event delegation for delete/toggle
+//   bookList.innerHTML = '';
 
-// update stats
+//   filteredBooks.forEach((book) => {
+//     const bookCardFragment = bookCardTemplate.content.cloneNode(true);
 
-// empty state show/hide
+//     const card = bookCardFragment.querySelector('.book-card');
+//     const categoryEl = bookCardFragment.querySelector('.book-category');
+//     const titleEl = bookCardFragment.querySelector('.book-title');
+//     const authorEl = bookCardFragment.querySelector('.book-author');
+//     const statusEl = bookCardFragment.querySelector('.book-status');
+//     const toggleBtn = bookCardFragment.querySelector('.toggle-read-btn');
+//     const deleteBtn = bookCardFragment.querySelector('.delete-btn');
 
-// filter + search inputs
+//     card.dataset.id = book.id;
+//     toggleBtn.dataset.id = book.id;
+//     deleteBtn.dataset.id = book.id;
 
-// Good practice order
+//     categoryEl.textContent = book.category;
+//     titleEl.textContent = book.title;
+//     authorEl.textContent = `by ${book.author}`;
+//     statusEl.textContent = book.isRead ? 'Read' : 'Unread';
 
-// hardcode 2 books first and render them
+//     statusEl.classList.toggle('read', book.isRead);
+//     statusEl.classList.toggle('unread', !book.isRead);
 
-// add form submit
+//     bookList.append(bookCardFragment);
+//   });
+// };
 
-// add delete
+// bookList.addEventListener('click', function (e) {
+//   const deleteBtn = e.target.closest('.delete-btn');
+//   const toggleBtn = e.target.closest('.toggle-read-btn');
 
-// add toggle read
+//   if (deleteBtn) {
+//     const id = deleteBtn.dataset.id;
+//     library.removeBook(id);
+//     render();
+//   }
 
-// update stats
+//   if (toggleBtn) {
+//     const id = toggleBtn.dataset.id;
+//     library.toggleBookStatus(id);
+//     render();
+//   }
+// });
 
-// add filter
+// const renderEmptyState = function () {
+//   const filterValue = filterSelect.value;
+//   const searchValue = searchInput.value;
 
-// add search
+//   const filteredBooks = library.getFilteredBooks(filterValue, searchValue);
 
-// refactor into cleaner methods
+//   emptyState.style.display = filteredBooks.length === 0 ? 'block' : 'none';
+// };
+
+// const render = function () {
+//   renderStats();
+//   renderBooks();
+//   renderEmptyState();
+// };
+
+// bookForm.addEventListener('submit', function (e) {
+//   e.preventDefault();
+
+//   const title = titleInput.value.trim();
+//   const author = authorInput.value.trim();
+//   const category = categorySelect.value;
+//   const isRead = isReadInput.checked;
+
+//   if (!title || !author || !category) return;
+
+//   const newBook = new Book(
+//     crypto.randomUUID(),
+//     title,
+//     author,
+//     category,
+//     isRead,
+//   );
+
+//   library.addBook(newBook);
+
+//   bookForm.reset();
+//   render();
+// });
+
+// searchInput.addEventListener('input', function () {
+//   render();
+// });
+
+// filterSelect.addEventListener('change', function () {
+//   render();
+// });
+
+// render();
+
+//------- CLASS
+
+'use strict';
 
 const bookForm = document.getElementById('bookForm');
 const titleInput = document.getElementById('title');
@@ -90,60 +223,63 @@ const emptyState = document.getElementById('emptyState');
 const bookList = document.getElementById('bookList');
 const bookCardTemplate = document.getElementById('bookCardTemplate');
 
-const Book = function (id, title, author, category, isRead) {
-  this.id = id;
-  this.title = title;
-  this.author = author;
-  this.category = category;
-  this.isRead = isRead;
-};
+class Book {
+  constructor(id, title, author, category, isRead) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
+    this.category = category;
+    this.isRead = isRead;
+  }
 
-Book.prototype.toggleRead = function () {
-  this.isRead = !this.isRead;
-};
+  toggleRead() {
+    this.isRead = !this.isRead;
+  }
+}
 
-const Library = function () {
-  this.books = [];
-};
+class Library {
+  constructor() {
+    this.books = [];
+  }
 
-Library.prototype.addBook = function (book) {
-  this.books.push(book);
-};
+  addBook(book) {
+    this.books.push(book);
+  }
 
-Library.prototype.removeBook = function (id) {
-  this.books = this.books.filter((book) => book.id !== id);
-};
+  removeBook(id) {
+    this.books = this.books.filter((book) => book.id !== id);
+  }
 
-Library.prototype.toggleBookStatus = function (id) {
-  const book = this.books.find((book) => book.id === id);
+  toggleBookStatus(id) {
+    const book = this.books.find((book) => book.id === id);
+    if (book) book.toggleRead();
+  }
 
-  if (book) book.toggleRead();
-};
+  getReadBooks() {
+    return this.books.filter((book) => book.isRead);
+  }
 
-Library.prototype.getReadBooks = function () {
-  return this.books.filter((book) => book.isRead);
-};
+  getUnreadBooks() {
+    return this.books.filter((book) => !book.isRead);
+  }
 
-Library.prototype.getUnreadBooks = function () {
-  return this.books.filter((book) => !book.isRead);
-};
+  getFilteredBooks(filterValue, searchValue) {
+    const search = searchValue.toLowerCase().trim();
 
-Library.prototype.getFilteredBooks = function (filterValue, searchValue) {
-  const search = searchValue.toLowerCase().trim();
+    return this.books.filter((book) => {
+      const matchesFilter =
+        filterValue === 'all' ||
+        (filterValue === 'read' && book.isRead) ||
+        (filterValue === 'unread' && !book.isRead);
 
-  return this.books.filter((book) => {
-    const matchesFilter =
-      filterValue === 'all' ||
-      (filterValue === 'read' && book.isRead) ||
-      (filterValue === 'unread' && !book.isRead);
+      const matchesSearch =
+        book.title.toLowerCase().includes(search) ||
+        book.author.toLowerCase().includes(search);
 
-    const matchesSearch =
-      book.title.toLowerCase().includes(search) ||
-      book.author.toLowerCase().includes(search);
-
-    return matchesFilter && matchesSearch;
-  });
-};
+      return matchesFilter && matchesSearch;
+    });
+  }
+}
 
 const library = new Library();
 
