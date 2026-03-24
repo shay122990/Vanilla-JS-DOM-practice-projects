@@ -119,5 +119,9 @@ export const projects = [
     title: 'Reading-List-Manager-OOP',
     link: './projects/reading-list-manager/index.html',
   },
+  {
+    title: 'Mapty-OOP',
+    link: './projects/mapty/index.html',
+  },
   // will add more projects here
 ];
