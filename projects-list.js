@@ -123,5 +123,9 @@ export const projects = [
     title: 'Mapty-OOP',
     link: './projects/mapty/index.html',
   },
+  {
+    title: 'Country Data',
+    link: './projects/country-data/index.html',
+  },
   // will add more projects here
 ];
