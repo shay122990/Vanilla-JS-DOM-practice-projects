@@ -16,27 +16,32 @@ body {
 
 .container {
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
   align-items: center;
+  height: 100vh;
+  padding: 2rem 0;
 }
 
 .countries {
-  /* margin-bottom: 8rem; */
-  display: flex;
-
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+  gap: 2rem;
+  width: 90%;
+  max-width: 120rem;
+  max-height: 100%;
+  overflow-y: auto;
   font-size: 2rem;
   opacity: 0;
   transition: opacity 1s;
+  padding-bottom: 2rem;
 }
 
 .country {
-  background-color: #fff;
-  box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.1);
-  font-size: 1.8rem;
-  width: 30rem;
-  border-radius: 0.7rem;
-  margin: 0 3rem;
-  /* overflow: hidden; */
+  width: 100%;
+  margin: 0;
+  border: #555 1px solid;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .neighbour::before {
