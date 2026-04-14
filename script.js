@@ -31,7 +31,6 @@ searchInput.addEventListener('input', function () {
 });
 
 renderProjects(projects);
+
 // TO-DO
-//1. add filter for projects
-//2. either pagination or scrollable container
 //3. more visible UI

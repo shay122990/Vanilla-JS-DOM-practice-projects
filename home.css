@@ -72,7 +72,7 @@ a {
 }
 
 main {
-  width: min(100%, var(--container));
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -97,6 +97,13 @@ h1 {
   border-color: var(--focus);
   box-shadow: 0 0 0 2px rgba(66, 165, 245, 0.2);
   outline: none;
+}
+
+.projects-container {
+  max-height: 700px;
+  overflow-y: auto;
+  width: 100%;
+  padding: 20px;
 }
 
 .grid {
