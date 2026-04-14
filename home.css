@@ -74,12 +74,19 @@ h1 {
   justify-self: center;
   text-align: center;
 }
-
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* THIS creates space between input and grid */
+  width: min(var(--container), 100%);
+  margin: 0 auto;
+}
 .grid {
   width: min(var(--container), 100%);
   display: grid;
   gap: var(--gap);
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  width: 100%;
 }
 
 .card {
@@ -93,6 +100,7 @@ h1 {
   align-items: center;
   transition: transform 0.2s ease;
   text-align: center;
+  height: 100%;
 }
 
 .card:hover {
@@ -110,4 +118,17 @@ h1 {
   color: var(--link);
   font-weight: bold;
   margin-top: auto;
+}
+input {
+  width: min(400px, 100%);
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  outline: none;
+}
+input:focus {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 2px rgba(66, 165, 245, 0.2);
 }
