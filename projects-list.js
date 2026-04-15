@@ -127,5 +127,9 @@ export const projects = [
     title: 'Country Data',
     link: './projects/country-data/index.html',
   },
+  {
+    title: 'Random Shop',
+    link: './projects/random-shop/index.html',
+  },
   // will add more projects here
 ];
