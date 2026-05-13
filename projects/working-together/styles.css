@@ -1,0 +1,111 @@
+/* Add the font import at the top so Poppins actually works */
+@import url('https://googleapis.com');
+
+body {
+  margin: 0;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 300px;
+  width: 800px;
+  background: linear-gradient(
+    267deg,
+    rgba(31, 66, 188, 1) 31%,
+    rgba(74, 106, 219, 1) 100%
+  );
+  border-radius: 20px;
+  border: 13px #dde5f9 solid;
+  color: white;
+}
+.intro p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.login {
+  position: relative;
+  width: 300px;
+  margin-top: 20px;
+}
+
+.login input {
+  width: 100%;
+  padding: 15px 25px;
+  padding-right: 60px;
+  box-sizing: border-box;
+  border-radius: 50px;
+  border: none;
+  background-color: #dde5f9a0;
+
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+}
+
+.login input::placeholder {
+  color: white;
+}
+
+.login button {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 38px;
+  width: 38px;
+  border: none;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+.login button {
+  color: #1f42bc;
+  font-size: 16px;
+  display: block;
+}
+
+.users {
+  position: absolute;
+  bottom: 95px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.users-list {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  gap: 1rem;
+  margin: 0;
+}
+
+.users-list li img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
