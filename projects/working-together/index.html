@@ -5,28 +5,29 @@
     <!-- Add this link below to enable the icons -->
     <link rel="stylesheet" href="https://cloudflare.com" />
     <link rel="stylesheet" href="styles.css" />
-    <script defer src="script.js"></script>
   </head>
-
+  
   <body>
     <div class="container">
       <div class="intro">
         <h1>Already working together?</h1>
         <p>Log in to your account and connect with your teammates</p>
       </div>
-
-      <div class="login">
+      
+      <form class="login">
         <input
-          autocomplete="true"
-          name="email"
-          placeholder="youremail@address.com"
+        autocomplete="true"
+        name="email"
+        placeholder="youremail@address.com"
+        class="email-input"
         />
-        <button type="submit">&#10141</button>
-      </div>
+        <button class="submit">&#10141</button>
+      </form>
       <div class="users">
         <ul class="users-list">
         </ul>
       </div>
     </div>
+    <script defer src="script.js"></script>
   </body>
 </html>

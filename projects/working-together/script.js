@@ -1,36 +1,68 @@
-const populateUserImages = async function () {
-  const users = document.querySelector('.users-list');
+const usersListEl = document.querySelector('.users-list');
+const formEl = document.querySelector('.login');
+const inputEl = document.querySelector('.email-input');
+const introEl = document.querySelector('.intro');
+const usersEl = document.querySelector('.users');
+const containerEl = document.querySelector('.container');
 
-  if (!users) {
-    console.error("Could not find element with ID 'users-list'");
-    return;
-  }
+const populateUserImages = async function () {
+  if (!usersListEl) return;
 
   try {
     const res = await fetch('https://randomuser.me/api/?results=5');
 
-    if (!res.ok) {
-      throw new Error(`HTTP error! Status: ${res.status}`);
-    }
+    if (!res.ok) throw new Error('Failed to fetch users');
 
     const data = await res.json();
 
-    users.innerHTML = '';
+    usersListEl.innerHTML = '';
 
     data.results.forEach((user) => {
-      const listItem = document.createElement('li');
-      const imageEl = document.createElement('img');
+      const li = document.createElement('li');
+      const img = document.createElement('img');
 
-      imageEl.src = user.picture.thumbnail;
-      imageEl.alt = 'Random User Profile Picture';
+      img.src = user.picture.thumbnail;
+      img.alt = `${user.name.first} profile picture`;
 
-      listItem.appendChild(imageEl);
-      users.appendChild(listItem);
+      li.appendChild(img);
+      usersListEl.appendChild(li);
     });
   } catch (error) {
-    console.error('Populate list failed:', error);
+    console.error(error);
+    usersListEl.innerHTML = '<li>Could not load users</li>';
   }
 };
 
-// Run the function
+const login = function (e) {
+  e.preventDefault();
+
+  const email = inputEl.value.trim();
+
+  if (!email) return alert('Please enter your email');
+
+  if (!email.includes('@')) {
+    return alert('Please enter a valid email');
+  }
+
+  inputEl.value = '';
+
+  [introEl, formEl, usersEl].forEach((el) => el.classList.add('hidden'));
+
+  const confirmDiv = document.createElement('div');
+  const confirmEl = document.createElement('span');
+  const proceedBtn = document.createElement('button');
+
+  confirmDiv.classList.add('confirm-div');
+  confirmEl.classList.add('confirm');
+  proceedBtn.classList.add('proceed');
+
+  confirmEl.textContent = 'You are now logged in';
+  proceedBtn.textContent = `Proceed \u279D`;
+
+  confirmDiv.append(confirmEl, proceedBtn);
+  containerEl.append(confirmDiv);
+};
+
 populateUserImages();
+
+formEl?.addEventListener('submit', login);

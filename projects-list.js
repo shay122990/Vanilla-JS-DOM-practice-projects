@@ -135,5 +135,9 @@ export const projects = [
     title: 'Working-Together',
     link: './projects/working-together/index.html',
   },
+  {
+    title: 'Retro-Portfolio',
+    link: './projects/retro-portfolio/index.html',
+  },
   // will add more projects here
 ];
