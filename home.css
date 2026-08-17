@@ -11,7 +11,7 @@ html {
 
 body {
   width: 100%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   margin: 0;
   padding: clamp(20px, 3vw, 42px);
   background: #d8d6cf;
@@ -23,6 +23,7 @@ body {
 main {
   width: min(1400px, 100%);
   margin: 0 auto;
+  height: 100%;
 }
 
 h1 {

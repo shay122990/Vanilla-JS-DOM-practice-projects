@@ -2,133 +2,109 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mobile-Menu</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Mobile Menu</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-
   <body>
     <div class="menu">
+      <button id="close-btn" aria-label="Close menu">×</button>
       <header class="user-info">
-        <img src="" alt="" />
-        <h1>name</h1>
-        <p>title</p>
+        <div class="avatar"><span>DJ</span></div>
+        <div class="user-text">
+          <h1>Dr. Jessica James</h1>
+          <p>Dermatologist</p>
+        </div>
       </header>
-      <button>+ add branch</button>
-      <div class="actions">
+      <button class="branch-btn">+ Add Branch</button>
+      <nav class="actions">
         <ul>
-          <li>
-            <!-- DASHBOARD ICON -->
+          <li class="active">
             <svg
-              xmlns="http://w3.org"
-              width="24"
-              height="24"
+              class="menu-icon"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
+              stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="menu-icon"
             >
               <rect width="7" height="9" x="3" y="3" rx="1" />
               <rect width="7" height="5" x="14" y="3" rx="1" />
               <rect width="7" height="9" x="14" y="12" rx="1" />
               <rect width="7" height="5" x="3" y="16" rx="1" />
             </svg>
-            <span>dashboard</span>
+            <span>Dashboard</span>
           </li>
           <li>
-            <!-- CALENDAR ICON -->
             <svg
-              xmlns="http://w3.org"
-              width="24"
-              height="24"
+              class="menu-icon"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
+              stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="menu-icon"
             >
               <path d="M8 2v4" />
               <path d="M16 2v4" />
               <rect width="18" height="18" x="3" y="4" rx="2" />
               <path d="M3 10h18" />
             </svg>
-            <span>post sessions</span>
+            <span>Post sessions</span>
           </li>
           <li>
-            <!-- VIDEO ICON -->
             <svg
-              xmlns="http://w3.org"
-              width="24"
-              height="24"
+              class="menu-icon"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
+              stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="menu-icon"
             >
               <path
                 d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.934a.5.5 0 0 0-.777-.416L16 11"
               />
               <rect width="14" height="12" x="2" y="6" rx="2" />
             </svg>
-            <span>live sessions</span>
+            <span>Live sessions</span>
           </li>
           <li>
-            <!-- MESSAGES ICON -->
             <svg
-              xmlns="http://w3.org"
-              width="24"
-              height="24"
+              class="menu-icon"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
+              stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="menu-icon"
             >
-              <rect width="20" height="16" x="2" y="4" rx="2" />
               <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              <rect width="20" height="16" x="2" y="4" rx="2" />
             </svg>
-            <span>messages</span>
+            <span>Messages</span>
           </li>
           <li>
-            <!-- LOCUM LIBRARY (STRETCHER/MEDICAL) ICON -->
             <svg
-              xmlns="http://w3.org"
-              width="24"
-              height="24"
+              class="menu-icon"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
+              stroke-width="1.7"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="menu-icon"
             >
-              <path d="M8 8h8" />
-              <path d="M12 4v8" />
-              <path d="M5 12h14a2 2 0 0 1 2 2v2H3v-2a2 2 0 0 1 2-2Z" />
-              <path d="M6 16v4" />
-              <path d="M10 16v4" />
-              <path d="M14 16v4" />
-              <path d="M18 16v4" />
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"
+              />
             </svg>
-            <span>locum library</span>
+            <span>Locum library</span>
           </li>
         </ul>
-      </div>
-      <button id="close-btn">x</button>
+      </nav>
     </div>
-
-    <!-- Look! No script tags required for the icons anymore! -->
+    <script src="./script.js"></script>
     <script type="module" src="../project.js"></script>
   </body>
 </html>

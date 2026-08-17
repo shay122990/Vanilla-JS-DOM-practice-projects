@@ -1,0 +1,172 @@
+.menu {
+  position: relative;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 28px 24px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(40, 60, 100, 0.12);
+  overflow: hidden;
+}
+
+.menu .user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 -28px;
+  padding: 22px 28px 26px;
+  background: linear-gradient(165deg, #648ce8, #4774dc);
+  color: #ffffff;
+}
+
+.menu .user-info h1 {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.menu .user-info p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 9px;
+}
+
+.menu .avatar {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  background: #dddddd;
+  color: #4774dc;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.menu .user-text {
+  min-width: 0;
+}
+
+.menu .branch-btn {
+  display: block;
+  margin: 20px auto 17px;
+  padding: 7px 17px;
+  border: 0;
+  border-radius: 4px;
+  background: #5f89ea;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 3px 7px rgba(95, 137, 234, 0.25);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.menu .branch-btn:hover {
+  background: #4d78df;
+  transform: translateY(-1px);
+}
+
+.menu .actions ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu .actions li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+  padding: 0 10px;
+  border-left: 2px solid transparent;
+  color: #333333;
+  font-size: 10px;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.menu .actions li:hover {
+  background: #f8faff;
+  color: #477ce0;
+}
+
+.menu .actions li.active {
+  border-left-color: #477ce0;
+  color: #477ce0;
+}
+
+.menu .menu-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #b8b8b8;
+}
+
+.menu .actions li.active .menu-icon,
+.menu .actions li:hover .menu-icon {
+  color: currentColor;
+}
+
+.menu #close-btn {
+  position: absolute;
+  top: 16px;
+  right: 15px;
+  z-index: 2;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #c2c2c2;
+  font-size: 23px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.menu #close-btn:hover {
+  color: #f88585;
+}
+
+.menu.collapsed {
+  width: 80px;
+  padding: 50px 12px 20px;
+}
+
+.menu.collapsed .user-info,
+.menu.collapsed .branch-btn {
+  display: none;
+}
+
+.menu.collapsed .actions li {
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+  border-left: 0;
+}
+
+.menu.collapsed .actions li span {
+  display: none;
+}
+
+.menu.collapsed .actions li.active {
+  border-left: 0;
+  border-right: 2px solid #477ce0;
+}
+
+.menu.collapsed #close-btn {
+  transform: rotate(180deg);
+}
